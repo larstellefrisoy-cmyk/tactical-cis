@@ -1,123 +1,243 @@
 <!doctype html>
-<html lang="no"><head><meta charset="utf-8">
+<html lang="nb"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
 <title>Tactical CIS Intelligence</title>
 <style>
-:root{--bg:#0f1411;--card:#171e19;--line:#2a352d;--txt:#e4ebe5;--mut:#8fa093;--acc:#9bc53d;--warn:#e0a030}
+:root{--bg:#0e1310;--card:#161d18;--card2:#1b231d;--line:#2a352d;--txt:#e6ece7;--mut:#93a396;--acc:#9bc53d;--news:#62a8d6;--ki:#ad92e6;--fact:#9bc53d;--own:#e0a030;--doc:#4fbcaa;--bad:#d06060;--nav:rgba(14,19,16,.92)}
+@media (prefers-color-scheme:light){:root{--bg:#f3f5f1;--card:#fff;--card2:#f7f9f5;--line:#d6ddd3;--txt:#18211b;--mut:#56655a;--acc:#4c7a10;--news:#1d6a9a;--ki:#6847b5;--fact:#3f7a12;--own:#a35f00;--doc:#13786a;--bad:#b03030;--nav:rgba(243,245,241,.94)}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow-wrap:anywhere}
-main{max-width:860px;margin:0 auto;padding:28px 16px 60px}
-header h1{margin:0;font-size:1.7rem;letter-spacing:.02em} header h1 span{color:var(--acc)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-wrap:anywhere}
+main{max-width:860px;margin:0 auto;padding:20px 16px 64px}
+a{color:var(--txt);text-decoration-color:var(--acc);text-underline-offset:3px} a:hover{color:var(--acc)}
+a:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--card);padding:8px 12px;z-index:20} .skip:focus{left:8px}
+
+/* Toppmeny: fast ved rulling, menyen (ikke siden) rulles sidelengs på smale skjermer */
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:0 16px;background:var(--nav);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.top .brand{font-weight:700;white-space:nowrap;font-size:.95rem} .top .brand span{color:var(--acc)}
+.top .links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin-left:auto} .top .links::-webkit-scrollbar{display:none}
+.top .links a{display:block;padding:12px 10px;font-size:.88rem;text-decoration:none;white-space:nowrap;color:var(--mut)}
+.top .links a:hover{color:var(--txt)}
+.anchor{scroll-margin-top:56px} #laering{scroll-margin-top:120px}
+
+header{margin:8px 0 18px}
+.kicker{margin:0;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:600}
+header h1{margin:2px 0 6px;font-size:clamp(1.5rem,5vw,2rem);line-height:1.2;letter-spacing:.01em} header h1 span{color:var(--acc)}
 .muted,.meta{color:var(--mut);font-size:.85rem}
-.note{border-left:3px solid var(--warn);padding:8px 12px;background:#1d1a12;font-size:.9rem;margin:18px 0}
-.err{border:1px solid #a33;background:#2a1414;padding:10px 14px;border-radius:8px;margin:18px 0}
-h2{margin:34px 0 12px;font-size:1.15rem;border-bottom:1px solid var(--line);padding-bottom:6px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
-.card.old{border-left:3px solid var(--mut)}
-.card h3{margin:4px 0 8px;font-size:1.05rem}
-a{color:var(--txt);text-decoration-color:var(--acc)} a:hover{color:var(--acc)}
-.sum,.rel{margin:6px 0;font-size:.92rem} .rel{color:#c9d6cb}
-.tag{display:inline-block;font-size:.75rem;padding:2px 8px;margin:6px 6px 0 0;border-radius:99px;background:#24331f;color:var(--acc)}
-.tag.q{background:#22282a;color:var(--mut)}
-.lp h4{margin:16px 0 6px;font-size:.98rem;color:var(--acc)}
-.lp blockquote{margin:6px 0;padding:6px 12px;border-left:3px solid var(--acc);background:#1b241d;font-size:.9rem;font-style:italic}
+h2{margin:40px 0 12px;font-size:1.2rem;border-bottom:1px solid var(--line);padding-bottom:6px}
+
+/* Fagbrief: lesetekst, ikke kort. Grønt = kildene, oransje = egen vurdering */
+.lead{font-size:1rem;margin:0 0 18px;max-width:68ch}
+.sw{padding:0 4px;border-radius:3px;border-bottom:2px solid var(--c)} .sw-fact{--c:var(--fact)} .sw-own{--c:var(--own)} .sw-now{--c:var(--own)}
+.brief{max-width:68ch;font-size:1.04rem;line-height:1.72}
+.brief h2{margin-top:28px}
+.example{border:2px dashed var(--bad);color:var(--txt);padding:8px 12px;border-radius:6px;font-size:.92rem}
+.example b{color:var(--bad)}
+.bluf{border-left:4px solid var(--own);padding:4px 0 4px 14px;margin:18px 0 8px}
+.bluf p{margin:0} .bluf p+p{font-size:1.06rem}
+.lbl{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--own)}
+.theme{margin:34px 0 0;padding-top:4px}
+.theme h3{font-size:1.18rem;line-height:1.35;margin:0 0 2px}
+.kind-line{margin:0 0 8px;font-size:.78rem;color:var(--mut);letter-spacing:.02em}
+.basis{margin:0 0 10px;font-size:.92rem;color:var(--mut);font-style:italic}
+.theme h4{margin:16px 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.theme h4 span{text-transform:none;letter-spacing:0;font-weight:400;color:var(--mut)}
+.q-fact{--c:var(--fact)} .q-own,.q-now{--c:var(--own)}
+.fact-p,.own-p,.now-p{margin:0 0 8px;padding-left:14px;border-left:3px solid var(--c)}
+.fact-p{--c:var(--fact)} .own-p{--c:var(--own)} .now-p{--c:var(--own);border-left-style:dashed}
+.now-p b{font-weight:600}
+q.fact{font-style:italic;quotes:"«" "»";background:color-mix(in srgb,var(--fact) 10%,transparent);padding:0 3px;border-radius:3px}
+.refs{font-size:.7rem;line-height:0;white-space:nowrap} a.ref{color:var(--acc);text-decoration:none;font-weight:700}
+.limits{font-size:.9rem;color:var(--mut);margin:10px 0 0}
+.refs-h{margin:32px 0 6px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.sources{list-style:none;padding:0;margin:0;font-size:.88rem;line-height:1.55}
+.sources li{margin:0 0 6px;padding-left:2.2em;text-indent:-2.2em;scroll-margin-top:64px}
+.sources li:target{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.sources .n{display:inline-block;width:2.2em;text-indent:0;color:var(--acc);font-weight:700}
+.divider{margin:56px 0 0;padding-top:14px;border-top:3px double var(--line);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+
+.note{border-left:3px solid var(--own);padding:8px 12px;background:color-mix(in srgb,var(--own) 9%,var(--card));font-size:.88rem;margin:12px 0;border-radius:0 6px 6px 0}
+.err{border:1px solid var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--card));padding:10px 14px;border-radius:8px;margin:18px 0;font-size:.9rem}
+.err ul{margin:6px 0 0;padding-left:20px}
+
+/* Kort: fargekant og etikett viser type innhold */
+.card{--c:var(--news);background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:14px 16px;margin:12px 0}
+.card.lp{--c:var(--ki)} .card.old{--c:var(--mut)} .card.old.lp{--c:var(--doc)}
+.card.old:not(.lp):not(.ref){border-style:dashed;border-left-style:solid;background:transparent}
+.card h3{margin:4px 0 8px;font-size:1.05rem;line-height:1.35}
+.kind,.card.lp:not(.old) .meta::before{display:inline-block;margin-right:8px;padding:1px 7px;border-radius:4px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c);border:1px solid currentColor;vertical-align:1px}
+.card.lp:not(.old) .meta::before{content:"KI-analyse"}
+.sum,.rel{margin:6px 0;font-size:.92rem} .rel{color:var(--mut)} .rel b{color:var(--txt);font-weight:600}
+.rel ul{margin:4px 0 0;padding-left:18px} .rel li{margin:2px 0}
+.tags{margin-top:4px}
+.tag{display:inline-block;font-size:.75rem;padding:2px 8px;margin:6px 6px 0 0;border-radius:99px;background:color-mix(in srgb,var(--acc) 16%,var(--card));color:var(--acc)}
+.tag.q{background:var(--card2);color:var(--mut)}
+
+/* Analyse- og læringspunktkort: grønt = kildefakta, oransje = egen vurdering */
+.lp h4{margin:18px 0 6px;font-size:.98rem;color:var(--txt)}
+.lp blockquote{margin:8px 0;padding:6px 12px;border-left:3px solid var(--fact);background:color-mix(in srgb,var(--fact) 9%,var(--card));font-size:.9rem;font-style:italic;border-radius:0 6px 6px 0}
+.lp blockquote::before{content:"Kildefakta · ordrett";display:block;font-style:normal;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fact)}
 .lp .cite{color:var(--mut);font-size:.8rem;margin:2px 0 6px}
-.lp .own{font-size:.9rem;margin:6px 0;padding:6px 12px;border-left:3px solid var(--warn);background:#1d1a12}
-</style></head><body><main>
-<header><h1>Tactical <span>CIS</span> Intelligence</h1>
+.lp .own{font-size:.9rem;margin:6px 0;padding:6px 12px;border-left:3px solid var(--own);background:color-mix(in srgb,var(--own) 9%,var(--card));border-radius:0 6px 6px 0}
+.lp .own b{color:var(--own)}
+footer{margin-top:48px;padding-top:12px;border-top:1px solid var(--line)}
+
+@media (max-width:560px){
+  body{font-size:15.5px} main{padding-top:12px}
+  .top .brand{display:none} .top .links{margin-left:0}
+  .card{padding:12px 13px} .brief{font-size:1rem}
+}
+@media print{
+  :root{--bg:#fff;--card:#fff;--card2:#fff;--txt:#000;--mut:#444;--line:#bbb}
+  .top,.skip{display:none} .card,.theme h4,.bluf{break-inside:avoid}
+}
+</style></head><body>
+<a class="skip" href="#innhold">Hopp til innhold</a>
+<nav class="top" aria-label="Seksjoner"><span class="brand">Tactical <span>CIS</span></span><div class="links"><a href="#brief">Fagbrief</a><a href="#nyheter">Nyheter</a><a href="#ki">KI-analyser</a><a href="#laering">Læringspunkter</a><a href="#fagstoff">Fagstoff</a></div></nav>
+<main id="innhold">
+<header><p class="kicker">Fagbrief · S-6 · taktisk samband · C2 · kommandoplasser</p>
+<h1>Tactical <span>CIS</span> Intelligence</h1>
 <p class="muted">Nyhetsbrief for S-6, taktisk samband, kommandoplasser og C2-noder · bataljon og lavere<br>
-Oppdatert 02.11.2026 20:17 UTC · kilde: 6 RSS-feeder (C4ISRNET, Breaking Defense, Defense One, War on the Rocks, Modern War Institute, DefenseScoop) · siste 7 dager · 14 saker</p></header>
+Oppdatert 04.11.2026 17:34 UTC · kilde: 6 RSS-feeder (C4ISRNET, Breaking Defense, Defense One, War on the Rocks, Modern War Institute, DefenseScoop) · siste 7 dager · 15 saker</p></header>
+<p class="lead">Briefen svarer på tre spørsmål for hvert tema: <span class="sw sw-fact">hva kildene viser</span>,
+<span class="sw sw-own">hva det betyr for S-6</span> (so what) og <span class="sw sw-now">hva man kan gjøre med det</span> (now what).
+Grønt er gjengivelse av kildene, oransje er egen vurdering. Under briefen ligger kildegrunnlaget: 15 nyheter
+fra RSS de siste 7 dagene, 4 KI-analyser av leste artikler og 3 dokumenterte læringspunkter fra fulltekst.</p>
+
+<div id="brief" class="anchor"></div>
+<section class="brief" aria-labelledby="brief-h">
+<h2 id="brief-h">Fagbrief</h2>
+<div class="bluf"><p class="lbl">Kort sagt · egen vurdering</p><p>Leveranser fra leverandører som GDIT viser muligheter for raskt deployerbare, zero‑trust C2‑miljøer, men automatisert overvåkning øker OPSEC‑risikoen for bevegelsesdata på bataljonsnivå. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>, <a class="ref" href="#kilde-2">2</a>]</sup></p></div>
+<section class="theme" aria-label="Deployable cloud‑basert MPE for taktisk C2">
+<h3>Deployable cloud‑basert MPE for taktisk C2</h3>
+<p class="kind-line">Enkeltsak: bygger på én kilde, ikke en tematisk sammenstilling</p>
+<h4 class="q-fact">Hva viser kildene?</h4>
+<p class="fact-p">GDITs Vion‑pakke består av deployerbar skymaskinvare, en zero‑trust‑plattform, felles datatjenester og C2‑applikasjoner som kan federere tjenester mellom partnere. Kilden skriver: <q class="fact">deployable cloud hardware, a secure zero-trust platform, the common data-centric services, and then the [command-and-control] mission applications</q> <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup> AI‑assistert oversettelse og feilsøking gjør at nettverksproblemer kan identifiseres og løses på minutter, og tjenestene kan federeres igjen. Kilden skriver: <q class="fact">We were able to use AI to say, ‘here’s the problem, here’s some of the logs,’ and within minutes we were back up and running and able to federate those services again</q> <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<h4 class="q-own">So what? Betydning for S-6 <span>(egen vurdering)</span></h4>
+<p class="own-p">Et deployerbart, zero‑trust C2‑miljø gir bataljons‑S‑6 mulighet til raskt å etablere sikre nettverk i austere operasjonsområder. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup> AI‑støttet feilsøking kan redusere nedetid ved nettverksfeil, noe som er kritisk for vedvarende kommando‑ og kontroll‑operasjoner. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<h4 class="q-now">Now what? Mulig anvendelse <span>(egen vurdering, ikke tiltak fra kildene)</span></h4>
+<p class="now-p"><b>I planleggingen:</b> Inkluder MPE‑pakke‑krav i fremtidige logistikk‑ og innkjøpsplaner for å sikre at bataljons‑C2 kan settes opp innen 24 timer. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<p class="now-p"><b>I trening og øving:</b> Gjennomfør øvelser med AI‑basert feilsøking for å trene personell i rask gjenoppretting av federerte tjenester. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<p class="limits"><b>Begrensninger:</b> Påstandene kommer fra leverandøren; ingen uavhengig verifikasjon eller kontraktsstatus.</p>
+</section>
+<section class="theme" aria-label="OPSEC‑utfordringer fra automatiserte overvåkingsnett">
+<h3>OPSEC‑utfordringer fra automatiserte overvåkingsnett</h3>
+<p class="kind-line">Enkeltsak: bygger på én kilde, ikke en tematisk sammenstilling</p>
+<h4 class="q-fact">Hva viser kildene?</h4>
+<p class="fact-p">Kommersielle overvåkingsnett med kameraer og KI‑basert sporing kan koble data til intensjon og tidspunkt, og dermed avsløre bevegelses‑ og deployeringsindikatorer. Kilden skriver: <q class="fact">force movement and unit deployment indicators that can reveal sensitive information to adversaries paying attention about training schedules and mobilization plans.</q> <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<h4 class="q-own">So what? Betydning for S-6 <span>(egen vurdering)</span></h4>
+<p class="own-p">Automatiserte overvåkingssystemer kan lekke taktisk bevegelsesdata, noe som svekker operasjonell sikkerhet på bataljonsnivå. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup> Risikoen ligger i koblingen av observasjonsdata med intensjons‑ og tidsinformasjon, ikke i enkeltobservasjoner. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<h4 class="q-now">Now what? Mulig anvendelse <span>(egen vurdering, ikke tiltak fra kildene)</span></h4>
+<p class="now-p"><b>I ledelsen:</b> Utvikle retningslinjer for å maskere eller fragmentere bevegelses‑ og deployeringsinformasjon i offentlige og private overvåkingsnett. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<p class="now-p"><b>I trening og øving:</b> Inkluder OPSEC‑scenarioer i battalion‑øvelser der enheter må operere under overvåkingspress og teste tiltak som spredning av lokasjoner. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<p class="limits"><b>Begrensninger:</b> Basert på anonyme tjenestemenn; ingen konkrete tall eller tiltak fra eget forsvar.</p>
+</section>
+<h3 class="refs-h">Kilder</h3>
+<ol class="sources"><li id="kilde-1"><span class="n">[1]</span> DefenseScoop: <a href="https://defensescoop.com/2026/10/29/gdit-vion-mission-partner-environment-system/" target="_blank" rel="noopener">GDIT puts Vion mission partner environment technology through its paces during Pacific exercise</a> (udatert). artikkeltekst lest (ca. 985 ord).</li><li id="kilde-2"><span class="n">[2]</span> DefenseScoop: <a href="https://defensescoop.com/2026/10/28/us-military-opsec-risks-automated-surveillance-networks/" target="_blank" rel="noopener">U.S. military building resilience against emerging OPSEC risks from automated surveillance networks</a> (udatert). artikkeltekst lest (ca. 610 ord).</li></ol>
+<p class="muted">Skrevet 04.11.2026. Syntese laget automatisk av KI-modellen openai/gpt-oss-120b (Groq) fra KI-analyser av artikler som er lest (helt eller delvis, se «lest» per kilde) de siste 7 dagene (analyses.json). Kildehenvisninger og sitater er kontrollert maskinelt mot de leste kildene; vurderingene (so what / now what) er KI-ens egne.</p>
+</section>
+
+<p class="divider">Kildegrunnlag</p>
+<div id="nyheter" class="anchor"></div>
+<h2>Aktuelle nyheter (siste 7 dager)</h2>
 <div class="note">Beskrivelsene er kildens egen RSS-tekst, og relevansen er utledet automatisk fra <b>tittel og RSS-beskrivelse</b>, ikke fra artikkeltekst.
 Relevansvurderingen er nøkkelordbasert og kan være feil. Verifiser alltid i originalkilden.</div>
-
-<h2>Aktuelle nyheter (siste 7 dager)</h2>
 <article class="card">
-  <div class="meta">02.11.2026 16:05 UTC · Breaking Defense · breakingdefense.com</div>
-  <h3><a href="https://breakingdefense.com/2026/11/pacific-command-bolsters-network-defense-with-cyber-defense-forces-pacific/" target="_blank" rel="noopener">Pacific Command bolsters network defense with Cyber Defense Forces Pacific</a></h3>
-  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The new concept has sent personnel from Cyber Defense Command at Fort Meade to the Pacific theater.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
-  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Breaking Defense</span></div>
+  <div class="meta"><span class="kind">Nyhet</span>04.11.2026 16:15 UTC · Breaking Defense · breakingdefense.com</div>
+  <h3><a href="https://breakingdefense.com/2026/11/shield-ai-cofounder-teases-snowball-of-x-bat-fighter-drone-announcements-in-europe/" target="_blank" rel="noopener">Shield AI cofounder teases ‘snowball’ of X-BAT fighter drone announcements in Europe</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Ryan Tseng told Breaking Defense that the prospective deals and new industry pacts will be publicized when “we’re ready to announce them.”</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
 </article><article class="card">
-  <div class="meta">02.11.2026 14:50 UTC · C4ISRNET · www.c4isrnet.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>04.11.2026 11:09 UTC · Breaking Defense · breakingdefense.com</div>
+  <h3><a href="https://breakingdefense.com/2026/11/israel-weapons-industry-expands-into-southeast-asia-with-thailands-deployment-of-counter-drone-system/" target="_blank" rel="noopener">Israel Weapons Industry expands into Southeast Asia with Thailand’s deployment of counter-drone system</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> “We are seeing strong demand for our platforms and systems across the region,” the company said in response to questions about its growth strategy for southern Asia.”</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>03.11.2026 19:56 UTC · Breaking Defense · breakingdefense.com</div>
+  <h3><a href="https://breakingdefense.com/2026/11/ausa-2026-the-ground-truth-on-the-armys-next-chapter/" target="_blank" rel="noopener">AUSA 2026: The ground truth on the Army’s next chapter</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> From autonomous warfare and drone innovation to acquisition reform and defense industrial base challenges, Breaking Defense examines the key developments and strategic priorities shaping the US Army’s future at AUSA 2026.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>02.11.2026 23:00 UTC · Defense One · www.defenseone.com</div>
+  <h3><a href="https://www.defenseone.com/policy/2026/11/industry-groups-cyber-sharing-law/416993/" target="_blank" rel="noopener">Industry groups want cyber threat-sharing law renewed through defense authorization bill</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Banks, utilities, and other industries are asking lawmakers to extend liability protections through 2035.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
+  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>02.11.2026 14:50 UTC · C4ISRNET · www.c4isrnet.com</div>
   <h3><a href="https://www.c4isrnet.com/videos/2026/11/02/what-could-the-humvee-of-the-future-look-like/" target="_blank" rel="noopener">What could the Humvee of the future look like?</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> From vehicles to wearable drone detection, new soldier systems were on display at AUSA 2026. Check out a roundup of our social coverage.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
   <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: C4ISRNET</span></div>
 </article><article class="card">
-  <div class="meta">02.11.2026 14:44 UTC · C4ISRNET · www.c4isrnet.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>02.11.2026 14:44 UTC · C4ISRNET · www.c4isrnet.com</div>
   <h3><a href="https://www.c4isrnet.com/videos/2026/11/02/high-energy-lasers-drones-and-power-innovations-in-defense-tech-business-of-defense-part-1/" target="_blank" rel="noopener">High-energy lasers, drones and power: Innovations in defense tech | Business of Defense – Part 1</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> From industry stalwarts to small startups, defense tech creators are looking to provide solutions as conflict morphs on a monthly basis. See some of what they had to offer at AUSA 2026.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
   <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: C4ISRNET</span></div>
 </article><article class="card">
-  <div class="meta">02.11.2026 14:23 UTC · Breaking Defense · breakingdefense.com</div>
-  <h3><a href="https://breakingdefense.com/2026/11/oshkosh-steps-into-larger-uas-space-with-new-grid-aero-partnership/" target="_blank" rel="noopener">Oshkosh steps into large UAS space with new Grid Aero partnership</a></h3>
-  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The two companies plan to team up on “design for manufacturability, production planning, supply chain optimization, and ultimately building Lifter aircraft at scale.”</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
+  <div class="meta"><span class="kind">Nyhet</span>02.11.2026 14:00 UTC · Defense One · www.defenseone.com</div>
+  <h3><a href="https://www.defenseone.com/threats/2026/11/officials-suspect-iran-series-cyberattacks-military-base-freezers/416992/" target="_blank" rel="noopener">Officials suspect Iran of cyberattacks on military base freezers</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Tehran is also suspected to have backed recent attacks on U.S. water-treatment equipment.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
+  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
 </article><article class="card">
-  <div class="meta">30.10.2026 14:45 UTC · Breaking Defense · breakingdefense.com</div>
-  <h3><a href="https://breakingdefense.com/2026/10/qatars-domestic-weapons-turkeys-drone-arsenal-and-the-mecca-pacts-next-test/" target="_blank" rel="noopener">Qatar’s domestic weapons, Turkey’s drone arsenal and the Mecca pact’s next test</a></h3>
-  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Middle East Bureau Chief Agnes Helou breaks down efforts by Turkey and Gulf nations to bolster their defense capabilities amid ongoing regional instability.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
-</article><article class="card">
-  <div class="meta">30.10.2026 11:21 UTC · Modern War Institute · mwi.westpoint.edu</div>
+  <div class="meta"><span class="kind">Nyhet</span>30.10.2026 11:21 UTC · Modern War Institute · mwi.westpoint.edu</div>
   <h3><a href="https://mwi.westpoint.edu/american-tercio-a-vision-for-infantry-drone-integration/" target="_blank" rel="noopener">American Tercio: A Vision for Infantry Drone Integration</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Today the jury is still out on whether or not drones will usher in the next military revolution. The related question of whether drones will be as lethal against American […] The post American Tercio: A Vision for Infantry Drone Integration appeared first on Modern War Institute .</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
   <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Modern War Institute</span></div>
 </article><article class="card">
-  <div class="meta">29.10.2026 21:00 UTC · Defense One · www.defenseone.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>29.10.2026 21:00 UTC · Defense One · www.defenseone.com</div>
   <h3><a href="https://www.defenseone.com/threats/2026/10/pentagon-investigates-suspected-cyberattack-behind-military-freezer-failures/416929/" target="_blank" rel="noopener">Six military freezers went bad in August. Was it a cyber attack?</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> After food spoiled at commissaries, Pentagon investigators are looking at similar incidents in France.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
   <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
 </article><article class="card">
-  <div class="meta">29.10.2026 18:05 UTC · War on the Rocks · warontherocks.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>29.10.2026 18:05 UTC · War on the Rocks · warontherocks.com</div>
   <h3><a href="https://warontherocks.com/whats-a-revolution-in-military-affairs-good-for/" target="_blank" rel="noopener">What’s a Revolution in Military Affairs Good For?</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> For decades, militaries have chased the next revolution in warfare. But what actually makes a revolution in military affairs revolutionary? Is there one happening now? Does it matter? Is it just about drones and AI or something more? Ryan digs into the promises, pitfalls, and persistent myths of …</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
   <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: War on the Rocks</span></div>
 </article><article class="card">
-  <div class="meta">29.10.2026 16:36 UTC · DefenseScoop · defensescoop.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>29.10.2026 16:36 UTC · DefenseScoop · defensescoop.com</div>
   <h3><a href="https://defensescoop.com/2026/10/29/gdit-vion-mission-partner-environment-system/" target="_blank" rel="noopener">GDIT puts Vion mission partner environment technology through its paces during Pacific exercise</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The tech stack includes deployable cloud hardware, a secure zero-trust platform, common data-centric services, and C2 mission applications, a company official told DefenseScoop. The post GDIT puts Vion mission partner environment technology through its paces during Pacific exercise appeared …</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Kan berøre overlevelsesevne, spredning og mobilitet for KO og C2-noder.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Kommandoplass / C2:</b> Kan berøre overlevelsesevne, spredning og mobilitet for KO og C2-noder.</p>
   <div class="tags"><span class="tag">Kommandoplass / C2</span><span class="tag q">Kilde: DefenseScoop</span></div>
 </article><article class="card">
-  <div class="meta">29.10.2026 10:53 UTC · Defense One · www.defenseone.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>29.10.2026 10:53 UTC · Defense One · www.defenseone.com</div>
   <h3><a href="https://www.defenseone.com/business/2026/10/defense-business-brief-tech-edge-pacfleet-talks-cyber-and-more/416906/" target="_blank" rel="noopener">Defense Business Brief: Tech at the edge; PACFLEET talks cyber; and more</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Ingen beskrivelse i feeden.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
   <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
 </article><article class="card">
-  <div class="meta">28.10.2026 21:09 UTC · Defense One · www.defenseone.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>28.10.2026 21:09 UTC · Defense One · www.defenseone.com</div>
   <h3><a href="https://www.defenseone.com/business/2026/10/us-space-industry-ukraine-starlink/416890/" target="_blank" rel="noopener">The US space industry will suffer for Ukraine’s Starlink outage, experts say</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> US allies aren’t happy: “We naturally insist that it works if we&#x27;re paying for it.&quot;</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Kan berøre valg av bærere, redundans (PACE) og samband ned til lag/tropp.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Bærere / radio / SATCOM:</b> Kan berøre valg av bærere, redundans (PACE) og samband ned til lag/tropp.</p>
   <div class="tags"><span class="tag">Bærere / radio / SATCOM</span><span class="tag q">Kilde: Defense One</span></div>
 </article><article class="card">
-  <div class="meta">28.10.2026 19:56 UTC · DefenseScoop · defensescoop.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>28.10.2026 19:56 UTC · DefenseScoop · defensescoop.com</div>
   <h3><a href="https://defensescoop.com/2026/10/28/army-test-range-access-commercial-vendors-drone-technology/" target="_blank" rel="noopener">Army designates 2 additional ‘permissive’ sites for commercial vendors to test their drone and counter-drone tech</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The move is part of a broader Army initiative aimed at facilitating vendor access to test ranges. The post Army designates 2 additional ‘permissive’ sites for commercial vendors to test their drone and counter-drone tech appeared first on DefenseScoop .</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
   <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: DefenseScoop</span></div>
 </article><article class="card">
-  <div class="meta">28.10.2026 19:27 UTC · DefenseScoop · defensescoop.com</div>
+  <div class="meta"><span class="kind">Nyhet</span>28.10.2026 19:27 UTC · DefenseScoop · defensescoop.com</div>
   <h3><a href="https://defensescoop.com/2026/10/28/us-military-opsec-risks-automated-surveillance-networks/" target="_blank" rel="noopener">U.S. military building resilience against emerging OPSEC risks from automated surveillance networks</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Frontier AI and other advanced technologies are making it easier for adversaries to find and exploit vulnerabilities associated with those interconnected capabilities. The post U.S. military building resilience against emerging OPSEC risks from automated surveillance networks appeared first on …</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Kan berøre signaturstyring, EMCON og overlevelsesevne for KO og sambandsnoder.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>OPSEC / signatur / EMCON:</b> Kan berøre signaturstyring, EMCON og overlevelsesevne for KO og sambandsnoder.</p>
   <div class="tags"><span class="tag">OPSEC / signatur / EMCON</span><span class="tag q">Kilde: DefenseScoop</span></div>
-</article><article class="card">
-  <div class="meta">28.10.2026 16:31 UTC · DefenseScoop · defensescoop.com</div>
-  <h3><a href="https://defensescoop.com/2026/10/28/army-aws-wwt-ai-cybersecurity-project-griffin/" target="_blank" rel="noopener">Army taps AWS and WWT to boost AI-enabled cybersecurity initiative</a></h3>
-  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> “Partnering with commercial industry is a national security imperative for the Army, as the private sector drives rapid innovation in superintelligence, cloud architecture and cyber operations capabilities,” Col. David Bergmann said. The post Army taps AWS and WWT to boost AI-enabled …</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
-  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: DefenseScoop</span></div>
 </article>
+<div id="ki" class="anchor"></div>
 <h2>KI-analyse av utvalgte saker</h2>
-<p class="muted">Sist oppdatert 02.11.2026.Artikkeltekst hentet og lest av Claude (KI) via workflowen «Oppdater Tactical CIS». Ikke en automatisk pipeline. Grønn ramme = <b>kildefakta</b> (ordrett fra artikkelen). Oransje ramme = <b>egen faglig vurdering</b> (KI), ikke artikkelens påstand. Lagres i analyses.json og tas med ved hver generering.</p>
+<p class="muted">Sist oppdatert 04.11.2026.Artikkeltekst hentet og lest av Claude (KI) via workflowen «Oppdater Tactical CIS». Ikke en automatisk pipeline. Grønn ramme = <b>kildefakta</b> (ordrett fra artikkelen). Oransje ramme = <b>egen faglig vurdering</b> (KI), ikke artikkelens påstand. Lagres i analyses.json og tas med ved hver generering.</p>
 <article class="card lp">
   <div class="meta">DefenseScoop · analysert 02.11.2026 · artikkeltekst lest (ca. 985 ord) · relevans: <b>middels (koalisjonssamband / MPE / feilsøking i felt)</b></div>
   <h3><a href="https://defensescoop.com/2026/10/29/gdit-vion-mission-partner-environment-system/" target="_blank" rel="noopener">GDIT puts Vion mission partner environment technology through its paces during Pacific exercise</a></h3>
@@ -172,31 +292,13 @@ Relevansvurderingen er nøkkelordbasert og kan være feil. Verifiser alltid i or
 <article class="card old">
   <div class="meta">Avviste saker</div>
   <p class="sum"><b>Lest, men avvist:</b></p>
-  <ul class="sum"><li><a href="https://breakingdefense.com/2026/11/pacific-command-bolsters-network-defense-with-cyber-defense-forces-pacific/" target="_blank" rel="noopener">Pacific Command bolsters network defense with Cyber Defense Forces Pacific</a>: handler om cyberforsvar av nettverk på teaternivå (DISA-Pacific), uten taktisk innhold for bataljon og lavere.</li><li><a href="https://www.defenseone.com/business/2026/10/defense-business-brief-tech-edge-pacfleet-talks-cyber-and-more/416906/" target="_blank" rel="noopener">Defense Business Brief: Tech at the edge; PACFLEET talks cyber</a>: inneholder bare generelle uttalelser («our networks will be fully under attack», «operate disaggregated and distributed») uten konkrete erfaringer eller tiltak. Det er for tynt til å utlede læringspunkter.</li></ul>
-  <p class="sum"><b>Avvist ut fra tittel og RSS-beskrivelse (ikke slått opp):</b> Humvee of the future og High-energy lasers (videosammendrag fra AUSA uten artikkeltekst), Oshkosh/Grid Aero (industripartnerskap om last-UAS), Qatar/Turkey (regional forsvarsindustri), military freezers (cyberhendelse ved kantiner), Revolution in Military Affairs (overordnet teori), Army test ranges (tilgang til testområder for leverandører), Army/AWS/WWT Project Griffin (kontrakt om KI-basert cybersikkerhet).</p>
+  <ul class="sum"><li><a href="https://breakingdefense.com/2026/11/pacific-command-bolsters-network-defense-with-cyber-defense-forces-pacific/" target="_blank" rel="noopener">Pacific Command bolsters network defense with Cyber Defense Forces Pacific</a>: handler om cyberforsvar av nettverk på teaternivå (DISA-Pacific), uten taktisk innhold for bataljon og lavere.</li><li><a href="https://www.defenseone.com/business/2026/10/defense-business-brief-tech-edge-pacfleet-talks-cyber-and-more/416906/" target="_blank" rel="noopener">Defense Business Brief: Tech at the edge; PACFLEET talks cyber</a>: inneholder bare generelle uttalelser («our networks will be fully under attack», «operate disaggregated and distributed») uten konkrete erfaringer eller tiltak. Det er for tynt til å utlede læringspunkter.</li><li><a href="https://defensescoop.com/2026/10/28/army-test-range-access-commercial-vendors-drone-technology/" target="_blank" rel="noopener">Army designates 2 additional ‘permissive’ sites for commercial vendors to test their drone and counter-drone tech</a>: Artikkelen handler om testområder for kommersielle leverandører av drone- og motdrone-teknologi og gir ingen konkret informasjon om taktisk samband, C2 eller KO på bataljonsnivå.</li><li><a href="https://defensescoop.com/2026/10/28/army-aws-wwt-ai-cybersecurity-project-griffin/" target="_blank" rel="noopener">Army taps AWS and WWT to boost AI-enabled cybersecurity initiative</a>: Artikkelen omhandler overordnet AI‑drevet cybersikkerhetsprogram og kontraktvalg, uten konkrete taktiske eller operative implikasjoner for S‑6, bataljons‑KO eller felt‑C2.</li></ul>
+  <p class="sum"><b>Avvist ut fra tittel og RSS-beskrivelse (ikke slått opp):</b> droneannonseringer (industri/strategisk nivå), counter‑drone Thailand (strategisk nivå), AUSA 2026 oversikt (generell industri), cyber‑delingslov (lovgivning, ikke taktisk), fremtidens Humvee (kjøretøy‑fokus, strategisk), innovasjoner AUSA (bredt industri‑fokus), Iran cyber‑angrep (strategisk cyber‑trussel), militære fryser‑feil (logistikk, ikke C2), RMA analyse (teoretisk, ikke taktisk).</p>
 </article>
-<h2>Lessons learned – eldre fagstoff</h2>
-<p class="muted">Kun kilder som svarte ved siste oppdatering. Tittel og beskrivelse er hentet fra kildens egen side.</p>
-<article class="card old">
-  <div class="meta">Eldre fagstoff · www.rusi.org · verifisert tilgjengelig 02.11.2026 20:17 UTC</div>
-  <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/preliminary-lessons-conventional-warfighting-russias-invasion-ukraine-february-july-2022" target="_blank" rel="noopener">Preliminary Lessons in Conventional Warfighting from Russia’s Invasion of Ukraine: February–July 2022</a></h3>
-  <p class="sum"><b>Kildens egen beskrivelse:</b> This study of the early phases of the 2022 war sheds light on Ukraine&#x27;s strengths and vulnerabilities, and the need for further Western support.
-</p>
-  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare, headquarters. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
-</article><article class="card old">
-  <div class="meta">Eldre fagstoff · www.rusi.org · verifisert tilgjengelig 02.11.2026 20:17 UTC</div>
-  <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/stormbreak-fighting-through-russian-defences-ukraines-2023-offensive" target="_blank" rel="noopener">Stormbreak: Fighting Through Russian Defences in Ukraine’s 2023 Offensive</a></h3>
-  <p class="sum"><b>Kildens egen beskrivelse:</b> Russian defences and military adaptations pose challenges for Ukraine&#x27;s 2023 offensive.
-</p>
-  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
-</article><article class="card old">
-  <div class="meta">Eldre fagstoff · www.rusi.org · verifisert tilgjengelig 02.11.2026 20:17 UTC</div>
-  <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/preliminary-lessons-ukraines-offensive-operations-2022-23" target="_blank" rel="noopener">Preliminary Lessons from Ukraine’s Offensive Operations, 2022–23</a></h3>
-  <p class="sum"><b>Kildens egen beskrivelse:</b> The purpose of this report is to examine the causes of the failure of the Ukrainian offensive in 2023 to avoid the repetition of such errors in the future and to inform the regeneration of offensive combat power in NATO militaries.</p>
-  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare, drone. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
-</article>
+<h2>Lessons learned – dokumenterte læringspunkter</h2>
+<p class="muted" id="laering">Lest i fulltekst og lagt inn manuelt. Hvert punkt har ordrett sitat (grønt) og sidetall, adskilt fra egen tolkning (oransje).</p>
 <article class="card old lp">
-  <div class="meta">Lest i fulltekst (PDF, 49 sider) · RUSI Special Report, juli 2024 · lagt inn manuelt 02.11.2026</div>
+  <div class="meta"><span class="kind">Dokumentert</span>Lest i fulltekst (PDF, 49 sider) · RUSI Special Report, juli 2024 · lagt inn manuelt 02.11.2026</div>
   <h3>Læringspunkter fra «Preliminary Lessons from Ukraine’s Offensive Operations, 2022–23»</h3>
   <p class="sum">Watling, J., Danylyuk, O. V. og Reynolds, N. (2024). RUSI. Fulltekst:
     <a href="https://static.rusi.org/lessons-learned-ukraine-offensive-2022-23.pdf" target="_blank" rel="noopener">static.rusi.org/lessons-learned-ukraine-offensive-2022-23.pdf</a>.
@@ -218,4 +320,26 @@ Relevansvurderingen er nøkkelordbasert og kan være feil. Verifiser alltid i or
   <p class="cite">Kilde: s. 37. Relatert: «Russian penetration of Ukrainian communications systems enabled capture of a range of materials» (s. 31).</p>
   <p class="own"><b>Egen tolkning:</b> En PACE-plan for KO og sambandsnoder bør bruke feltkabel og ordonnans aktivt i stillingsfaser for å redusere utstråling, ikke bare som siste nødløsning. Sitatet fra s. 31 understreker at COMSEC også er et operasjonssikkerhetsspørsmål.</p>
 </article>
+<div id="fagstoff" class="anchor"></div>
+<h2>Eldre fagstoff – ikke lest</h2>
+<p class="muted">Kun kilder som svarte ved siste oppdatering. Tittel og beskrivelse er hentet fra kildens egen side.</p>
+<article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>www.rusi.org · verifisert tilgjengelig 04.11.2026 17:34 UTC</div>
+  <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/preliminary-lessons-conventional-warfighting-russias-invasion-ukraine-february-july-2022" target="_blank" rel="noopener">Preliminary Lessons in Conventional Warfighting from Russia’s Invasion of Ukraine: February–July 2022</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> This study of the early phases of the 2022 war sheds light on Ukraine&#x27;s strengths and vulnerabilities, and the need for further Western support.
+</p>
+  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare, headquarters. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>www.rusi.org · verifisert tilgjengelig 04.11.2026 17:34 UTC</div>
+  <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/stormbreak-fighting-through-russian-defences-ukraines-2023-offensive" target="_blank" rel="noopener">Stormbreak: Fighting Through Russian Defences in Ukraine’s 2023 Offensive</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> Russian defences and military adaptations pose challenges for Ukraine&#x27;s 2023 offensive.
+</p>
+  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>www.rusi.org · verifisert tilgjengelig 04.11.2026 17:34 UTC</div>
+  <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/preliminary-lessons-ukraines-offensive-operations-2022-23" target="_blank" rel="noopener">Preliminary Lessons from Ukraine’s Offensive Operations, 2022–23</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> The purpose of this report is to examine the causes of the failure of the Ukrainian offensive in 2023 to avoid the repetition of such errors in the future and to inform the regeneration of offensive combat power in NATO militaries.</p>
+  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare, drone. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article>
+<footer class="muted">Tactical CIS Intelligence er en hobbyprototype. Ikke offisiell veiledning. Kontroller alltid opplysninger i originalkilden før bruk.</footer>
 </main></body></html>
