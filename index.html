@@ -42,8 +42,8 @@ h2{margin:40px 0 12px;font-size:1.2rem;border-bottom:1px solid var(--line);paddi
 .theme h3{font-size:1.18rem;line-height:1.35;margin:0 0 2px}
 .kind-line{margin:0 0 8px;font-size:.78rem;color:var(--mut);letter-spacing:.02em}
 .basis{margin:0 0 10px;font-size:.92rem;color:var(--mut);font-style:italic}
-.theme h4{margin:16px 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
-.theme h4 span{text-transform:none;letter-spacing:0;font-weight:400;color:var(--mut)}
+.theme h4,.lp h4.sec{margin:16px 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.theme h4 span,.lp h4.sec span{text-transform:none;letter-spacing:0;font-weight:400;color:var(--mut)}
 .q-fact{--c:var(--fact)} .q-own,.q-now{--c:var(--own)}
 .fact-p,.own-p,.now-p{margin:0 0 8px;padding-left:14px;border-left:3px solid var(--c)}
 .fact-p{--c:var(--fact)} .own-p{--c:var(--own)} .now-p{--c:var(--own);border-left-style:dashed}
@@ -82,6 +82,14 @@ q.fact{font-style:italic;quotes:"«" "»";background:color-mix(in srgb,var(--fac
 .lp .cite{color:var(--mut);font-size:.8rem;margin:2px 0 6px}
 .lp .own{font-size:.9rem;margin:6px 0;padding:6px 12px;border-left:3px solid var(--own);background:color-mix(in srgb,var(--own) 9%,var(--card));border-radius:0 6px 6px 0}
 .lp .own b{color:var(--own)}
+.lp .own ul{margin:4px 0 0;padding-left:18px}
+.lp h5{margin:12px 0 4px;font-size:.95rem} .lp h5 span{font-weight:400;color:var(--mut)}
+.areas .lbl-a{font-size:.75rem;color:var(--mut);margin-right:6px}
+/* TTP: praksis slik kilden beskriver den (grønt = kilden), ikke anbefaling */
+.ttp{margin:8px 0 12px;padding-left:10px;border-left:2px dotted var(--fact)}
+.ttp-note{margin:0 0 4px}
+.ttp-st{font-weight:600;color:var(--fact)} p.ttp-st{margin:0;font-size:.78rem}
+.older{color:var(--mut);font-style:italic}
 footer{margin-top:48px;padding-top:12px;border-top:1px solid var(--line)}
 
 @media (max-width:560px){
@@ -100,52 +108,58 @@ footer{margin-top:48px;padding-top:12px;border-top:1px solid var(--line)}
 <header><p class="kicker">Fagbrief · S-6 · taktisk samband · C2 · kommandoplasser</p>
 <h1>Tactical <span>CIS</span> Intelligence</h1>
 <p class="muted">Nyhetsbrief for S-6, taktisk samband, kommandoplasser og C2-noder · bataljon og lavere<br>
-Oppdatert 06.11.2026 13:16 UTC · kilde: 6 RSS-feeder (C4ISRNET, Breaking Defense, Defense One, War on the Rocks, Modern War Institute, DefenseScoop) · siste 7 dager · 13 saker</p></header>
+Oppdatert 07.11.2026 11:56 UTC · kilde: 8 RSS-feeder (C4ISRNET, Breaking Defense, Defense One, War on the Rocks, Modern War Institute, DefenseScoop, RUSI, Forsvarets forum) · siste 7 dager · 27 saker</p></header>
 <p class="lead">Briefen svarer på tre spørsmål for hvert tema: <span class="sw sw-fact">hva kildene viser</span>,
 <span class="sw sw-own">hva det betyr for S-6</span> (so what) og <span class="sw sw-now">hva man kan gjøre med det</span> (now what).
-Grønt er gjengivelse av kildene, oransje er egen vurdering. Under briefen ligger kildegrunnlaget: 13 nyheter
+Der kildene selv beskriver konkret praksis, vises den i tillegg som <span class="sw sw-fact">TTP og praktisk læring</span>
+med ordrett sitat: en gjengivelse av kilden, ikke en anbefaling.
+Grønt er gjengivelse av kildene, oransje er egen vurdering. Under briefen ligger kildegrunnlaget: 27 nyheter
 fra RSS de siste 7 dagene, 4 KI-analyser av leste artikler og 3 dokumenterte læringspunkter fra fulltekst.</p>
 
 <div id="brief" class="anchor"></div>
 <section class="brief" aria-labelledby="brief-h">
 <h2 id="brief-h">Fagbrief</h2>
-<div class="bluf"><p class="lbl">Kort sagt · egen vurdering</p><p>S-6 bør vurdere innføring av deployerbare sky‑baserte C2‑løsninger med zero‑trust og AI‑støtte, samtidig som de styrker OP‑SEC‑beskyttelse mot automatiserte overvåkningsnett og tilpasser drone‑operatørorganisering til bataljonsnivå. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>, <a class="ref" href="#kilde-2">2</a>, <a class="ref" href="#kilde-3">3</a>]</sup></p></div>
-<section class="theme" aria-label="Deployable cloud‑basert C2 med zero‑trust og AI‑støtte">
-<h3>Deployable cloud‑basert C2 med zero‑trust og AI‑støtte</h3>
+<div class="bluf"><p class="lbl">Kort sagt · egen vurdering</p><p>Starlink gir rask administrativ kommunikasjon i felt, men avhenger av kommersielle avtaler; sensorbasert luftromsmonitorering og motstandsdyktige droner viser behov for integrert taktisk CIS‑planlegging på KO‑nivå. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>, <a class="ref" href="#kilde-2">2</a>, <a class="ref" href="#kilde-3">3</a>]</sup></p></div>
+<section class="theme" aria-label="Satellittbasert feltkommunikasjon med Starlink">
+<h3>Satellittbasert feltkommunikasjon med Starlink</h3>
 <p class="kind-line">Enkeltsak: bygger på én kilde, ikke en tematisk sammenstilling</p>
 <h4 class="q-fact">Hva viser kildene?</h4>
-<p class="fact-p">Vion‑pakken inneholder deployerbar skymaskinvare, en zero‑trust‑plattform, felles datatjenester og C2‑applikasjoner; AI brukes til oversettelse og feilsøking av nettverksproblemer. Kilden skriver: <q class="fact">deployable cloud hardware, a secure zero-trust platform, the common data-centric services, and then the [command-and-control] mission applications</q> <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<p class="fact-p">Forsvaret har inngått en rammeavtale på inntil 450 MNOK med Marlink for Starlink‑satellittkommunikasjon, brukt til e‑post, internettilgang og velferd for 180 aktive abonnementer. Kilden skriver: <q class="fact">Rammeavtalen dekker Forsvaret, Politiet, PST og Nasjonal sikkerhetsmyndighet (NSM).</q> <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
 <h4 class="q-own">So what? Betydning for S-6 <span>(egen vurdering)</span></h4>
-<p class="own-p">En slik pakke kan gi bataljons‑S‑6 raskt skalerbare C2‑tjenester med innebygd sikkerhet og AI‑støtte, noe som øker operasjonell fleksibilitet. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<p class="own-p">Starlink‑tilgangen gir KO‑personell mulighet til rask administrativ kommunikasjon, men avhenger av kommersielle avtaler som kan påvirke operativ tilgjengelighet. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<h4 class="q-fact">TTP og praktisk læring <span>(dokumentert i kildene, gjengivelse og ikke anbefaling)</span></h4>
+<p class="fact-p ttp-p"><span class="ttp-st">Status (KI-klassifisert ut fra kilden): brukt:</span> Bruke Starlink‑abonnementer for e‑post, internettilgang og velferdstjenester i felt Betingelser: Tilgjengelig gjennom rammeavtale med Marlink, 180 aktive abonnementer, ingen. Kilden skriver: <q class="fact">Forsvaret benytter Starlink til administrative formål og velferd, blant annet e‑post og internettilgang.</q> <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
 <h4 class="q-now">Now what? Mulig anvendelse <span>(egen vurdering, ikke tiltak fra kildene)</span></h4>
-<p class="now-p"><b>I planleggingen:</b> Vurdere pilotprosjekt for deployerbar sky‑hardware i øvelser, med fokus på zero‑trust‑integrasjon og AI‑basert feilsøking. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
-<p class="limits"><b>Begrensninger:</b> Kilden er leverandør‑basert og ikke kontraktsfestet; ingen praktisk erfaring fra norske enheter.</p>
+<p class="now-p"><b>I planleggingen:</b> Inkluder Starlink‑kapasitet i KO‑planer som sekundær kanal for data‑ og velferdstjenester, og vurder reserve‑satellittløsninger ved avbrudd. <sup class="refs">[<a class="ref" href="#kilde-1">1</a>]</sup></p>
+<p class="limits"><b>Begrensninger:</b> Kun én kilde, fokus på administrativ bruk, ingen data om taktisk data‑overføring eller robusthet under konflikt.</p>
 </section>
-<section class="theme" aria-label="OPSEC‑risiko fra automatiserte overvåkningsnett">
-<h3>OPSEC‑risiko fra automatiserte overvåkningsnett</h3>
+<section class="theme" aria-label="Luftromsmonitorering med NASAMS‑sensorer">
+<h3>Luftromsmonitorering med NASAMS‑sensorer</h3>
 <p class="kind-line">Enkeltsak: bygger på én kilde, ikke en tematisk sammenstilling</p>
 <h4 class="q-fact">Hva viser kildene?</h4>
-<p class="fact-p">Kommersielle overvåkingsnett med KI‑basert sporing kan koble data til intensjon og tidspunkt, og dermed avsløre bevegelses‑ og deployeringsindikatorer. Kilden skriver: <q class="fact">force movement and unit deployment indicators that can reveal sensitive information to adversaries paying attention about training schedules and mobilization plans.</q> <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<p class="fact-p">NASAMS‑sensorene gir tidlig oppdagelse og varsling av droner i grenseområdene i Finnmark, med utplassering i Kirkenes. Kilden skriver: <q class="fact">Sensorene skal oppdage, varsle om droner og gi et best mulig bilde av det som beveger seg i luftrommet i grenseområdene.</q> <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
 <h4 class="q-own">So what? Betydning for S-6 <span>(egen vurdering)</span></h4>
-<p class="own-p">Automatiserte overvåkningssystemer kan lekke taktisk bevegelsesdata, som undergraver sikkerheten til C2‑nettverk på lavt nivå. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<p class="own-p">NASAMS‑sensorer gir tidlig varsling av droner, noe som kan integreres i KO‑sambandsnett for å beskytte kritisk kommunikasjon mot luftbaserte trusler. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<h4 class="q-fact">TTP og praktisk læring <span>(dokumentert i kildene, gjengivelse og ikke anbefaling)</span></h4>
+<p class="fact-p ttp-p"><span class="ttp-st">Status (KI-klassifisert ut fra kilden): brukt:</span> Utplassering av NASAMS‑sensorer i Kirkenes for å oppdage droner Betingelser: Forebyggende tiltak uten konkret ny trussel, i grenseområdet Finnmark. Kilden skriver: <q class="fact">Luftforsvaret har utplassert Nasams-sensorer i Kirkenes for å oppdage droner som kommer ut av kurs.</q> <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
 <h4 class="q-now">Now what? Mulig anvendelse <span>(egen vurdering, ikke tiltak fra kildene)</span></h4>
-<p class="now-p"><b>I trening og øving:</b> Inkludere OPSEC‑moduler i S‑6‑trening som adresserer data‑maskering og lokasjons‑spredning mot KI‑basert overvåkning. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
-<p class="limits"><b>Begrensninger:</b> Fokus på US‑militære scenarioer; ingen konkrete norske tiltak.</p>
+<p class="now-p"><b>I organiseringen:</b> Etabler prosedyrer for å koble sensorvarsel direkte til KO‑nettverk, slik at operatører får umiddelbar situasjonsforståelse og kan iverksette mottiltak. <sup class="refs">[<a class="ref" href="#kilde-2">2</a>]</sup></p>
+<p class="limits"><b>Begrensninger:</b> Enkeltstående kilde, begrenset til grenseområde Finnmark, ingen informasjon om integrasjon med KO‑nett.</p>
 </section>
-<section class="theme" aria-label="Drone‑operatørorganisering i bataljons‑C2">
-<h3>Drone‑operatørorganisering i bataljons‑C2</h3>
+<section class="theme" aria-label="Motstand mot jamming i droner">
+<h3>Motstand mot jamming i droner</h3>
 <p class="kind-line">Enkeltsak: bygger på én kilde, ikke en tematisk sammenstilling</p>
 <h4 class="q-fact">Hva viser kildene?</h4>
-<p class="fact-p">Et bataljons‑HQ bør ha en egen seksjon med ti drone‑operatører, organisert rundt fire funksjoner: direkte angrep, C2, observasjon/kall‑til‑ild, og mot‑drone‑operasjoner. Kilden skriver: <q class="fact">A battalion headquarters should have a dedicated section of ten drone operators, built around the same four functions as at the platoon level.</q> <sup class="refs">[<a class="ref" href="#kilde-3">3</a>]</sup></p>
+<p class="fact-p">Russiske droner får større antenner for å gjøre dem mer motstandsdyktige mot ukrainsk jamming, mens Ukraina bruker koordinat‑spoofing for å avlede dem. Kilden skriver: <q class="fact">Russland utstyrer dronene sine med større antenner for å gjøre dem mer motstandsdyktige mot ukrainsk jamming.</q> <sup class="refs">[<a class="ref" href="#kilde-3">3</a>]</sup></p>
 <h4 class="q-own">So what? Betydning for S-6 <span>(egen vurdering)</span></h4>
-<p class="own-p">En dedikert drone‑seksjon i bataljons‑HQ gir direkte C2‑kapasitet for luft‑basert rekognosering og mot‑drone‑operasjoner. <sup class="refs">[<a class="ref" href="#kilde-3">3</a>]</sup></p>
+<p class="own-p">Større antenner på droner og koordinat‑spoofing viser at både jamming‑motstand og mot‑jamming‑teknikker må trenes for å sikre pålitelig UAV‑kommunikasjon. <sup class="refs">[<a class="ref" href="#kilde-3">3</a>]</sup></p>
 <h4 class="q-now">Now what? Mulig anvendelse <span>(egen vurdering, ikke tiltak fra kildene)</span></h4>
-<p class="now-p"><b>I ledelsen:</b> Opprette en pilot‑drone‑seksjon på 10 operatører i ett bataljons‑HQ for å teste integrasjon med eksisterende C2‑struktur. <sup class="refs">[<a class="ref" href="#kilde-3">3</a>]</sup></p>
-<p class="limits"><b>Begrensninger:</b> Meningsartikkel uten teknisk detalj om datalinker eller frekvenser.</p>
+<p class="now-p"><b>Bør undersøkes nærmere:</b> Undersøk hvordan KO‑samband kan støtte anti‑jamming‑strategier for UAV‑operasjoner, inkludert test av alternative navigasjons‑ og kommunikasjons‑løsninger. <sup class="refs">[<a class="ref" href="#kilde-3">3</a>]</sup></p>
+<p class="limits"><b>Begrensninger:</b> Én kilde, fokus på droner, ikke direkte koblet til KO‑samband eller K2‑operasjoner.</p>
 </section>
 <h3 class="refs-h">Kilder</h3>
-<ol class="sources"><li id="kilde-1"><span class="n">[1]</span> DefenseScoop: <a href="https://defensescoop.com/2026/10/29/gdit-vion-mission-partner-environment-system/" target="_blank" rel="noopener">GDIT puts Vion mission partner environment technology through its paces during Pacific exercise</a> (udatert). artikkeltekst lest (ca. 985 ord).</li><li id="kilde-2"><span class="n">[2]</span> DefenseScoop: <a href="https://defensescoop.com/2026/10/28/us-military-opsec-risks-automated-surveillance-networks/" target="_blank" rel="noopener">U.S. military building resilience against emerging OPSEC risks from automated surveillance networks</a> (udatert). artikkeltekst lest (ca. 610 ord).</li><li id="kilde-3"><span class="n">[3]</span> Modern War Institute: <a href="https://mwi.westpoint.edu/american-tercio-a-vision-for-infantry-drone-integration/" target="_blank" rel="noopener">American Tercio: A Vision for Infantry Drone Integration</a> (udatert). artikkeltekst lest (ca. 2 600 ord) · meningsartikkel.</li></ol>
-<p class="muted">Skrevet 06.11.2026. Syntese laget automatisk av KI-modellen openai/gpt-oss-120b (Groq) fra KI-analyser av artikler som er lest (helt eller delvis, se «lest» per kilde) de siste 7 dagene (analyses.json). Kildehenvisninger og sitater er kontrollert maskinelt mot de leste kildene; vurderingene (so what / now what) er KI-ens egne.</p>
+<ol class="sources"><li id="kilde-1"><span class="n">[1]</span> Forsvaretsforum: <a href="https://www.forsvaretsforum.no/elon-musk-fma-materiell/forsvaret-og-politiet-kjoper-inn-starlink-til-450-millioner/531127" target="_blank" rel="noopener">Kjøper inn Starlink sammen med politiet</a> (04.11.2026). artikkeltekst lest (ca. 170 ord).</li><li id="kilde-2"><span class="n">[2]</span> Forsvaretsforum: <a href="https://www.forsvaretsforum.no/drone-droner-forsvaret/ny-luftovervaking-i-finnmark-skal-oppdage-droner/530980" target="_blank" rel="noopener">Ny luftovervåking skal oppdage droner</a> (03.11.2026). artikkeltekst lest (ca. 278 ord).</li><li id="kilde-3"><span class="n">[3]</span> Forsvarets Forum: <a href="https://www.forsvaretsforum.no/droner-jamming-materiell/slik-skal-russiske-droner-motsta-ukrainsk-jamming/530956" target="_blank" rel="noopener">Slik skal russiske droner motstå ukrainsk jamming</a> (07.11.2026). artikkeltekst lest (ca. 255 ord).</li></ol>
+<p class="muted">Skrevet 07.11.2026. Syntese laget automatisk av KI-modellen openai/gpt-oss-120b (Groq) fra KI-analyser av artikler som er lest (helt eller delvis, se «lest» per kilde) de siste 7 dagene (analyses.json). Kildehenvisninger og sitater er kontrollert maskinelt mot de leste kildene. TTP-avsnittene viser bare praksis som kildene selv beskriver, kontrollert mot ordrett sitat, og status (brukt/anbefalt/planlagt) er KI-ens klassifisering ut fra kilden; eldre analyser er bare brukt til sammenligning; vurderingene (so what / now what) er KI-ens egne.</p>
 </section>
 
 <p class="divider">Kildegrunnlag</p>
@@ -154,87 +168,263 @@ fra RSS de siste 7 dagene, 4 KI-analyser av leste artikler og 3 dokumenterte læ
 <div class="note">Beskrivelsene er kildens egen RSS-tekst, og relevansen er utledet automatisk fra <b>tittel og RSS-beskrivelse</b>, ikke fra artikkeltekst.
 Relevansvurderingen er nøkkelordbasert og kan være feil. Verifiser alltid i originalkilden.</div>
 <article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>07.11.2026 05:00 UTC · Forsvarets forum · www.forsvaretsforum.no</div>
+  <h3><a href="https://www.forsvaretsforum.no/droner-jamming-materiell/slik-skal-russiske-droner-motsta-ukrainsk-jamming/530956" target="_blank" rel="noopener">Slik skal russiske droner motstå ukrainsk jamming</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Russland utstyrer dronene sine med større antenner for å gjøre dem mer motstandsdyktige mot ukrainsk jamming. Det kan tvinge Ukraina til å måtte bruke dyrere våpen til å stanse angrepene.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Samband / nettverk:</b> Kan berøre bærere, sambandsnoder, retransmisjon, redundans og PACE i taktiske nett. <b>EK / spektrum / signatur:</b> Kan berøre EK-trussel mot sambandsnoder, spektrumsforvaltning, EMCON og signaturstyring for KO. <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Samband / nettverk</span><span class="tag">EK / spektrum / signatur</span><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Forsvarets forum</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>07.11.2026 05:00 UTC · Forsvarets forum · www.forsvaretsforum.no</div>
+  <h3><a href="https://www.forsvaretsforum.no/donasjon-droner-materiell/kadetter-finansierte-flere-titalls-droner-til-ukraina/531237" target="_blank" rel="noopener">Finansierte flere titalls droner til Ukraina</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Row for Ukraine rodde inn over en million kroner i sommer. En ukrainsk organisasjon doblet beløpet.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Forsvarets forum</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>06.11.2026 18:59 UTC · Breaking Defense · breakingdefense.com</div>
+  <h3><a href="https://breakingdefense.com/2026/11/missed-ausa-2026-get-the-ground-truth-from-breaking-defenses-free-ebook/" target="_blank" rel="noopener">Missed AUSA 2026? Get the Ground Truth from Breaking Defense’s free eBook</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Catch up on the conference’s biggest stories, Army priorities and industry developments in our AUSA 2026 after-action report. Download it free, with no registration required.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>TTP / erfaringer:</b> Saken kan omtale dokumentert praksis eller erfaringer; sjekk kilden for hva som faktisk er dokumentert.</p>
+  <div class="tags"><span class="tag">TTP / erfaringer</span><span class="tag q">Kilde: Breaking Defense</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>06.11.2026 18:00 UTC · Defense One · www.defenseone.com</div>
+  <h3><a href="https://www.defenseone.com/policy/2026/11/ai-dialogue-china-congress/417105/" target="_blank" rel="noopener">&#x27;Permanent, serious&#x27; dialogue needed with China on AI: tech-focused lawmaker</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> “The Chinese Communist Party doesn’t want rogue AI agents hacking their systems and their water authorities any more than we do,” Rep. James Walkinshaw, D-Va., said Thursday.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber / informasjonssikkerhet:</b> Kan berøre sikkerhet og robusthet i taktiske CIS; sjekk om saken har taktisk relevans.</p>
+  <div class="tags"><span class="tag">Cyber / informasjonssikkerhet</span><span class="tag q">Kilde: Defense One</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>06.11.2026 17:29 UTC · DefenseScoop · defensescoop.com</div>
+  <h3><a href="https://defensescoop.com/2026/11/06/gps-jamming-risks-to-civilians-from-military-testing/" target="_blank" rel="noopener">Director of GPS Innovation Alliance warns of risks to civilians from military testing of jamming and spoofing technologies</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> A fatal aircraft crash near a military test range is raising concerns about troops’ expanding jamming and spoofing pursuits. The post Director of GPS Innovation Alliance warns of risks to civilians from military testing of jamming and spoofing technologies appeared first on DefenseScoop .</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>EK / spektrum / signatur:</b> Kan berøre EK-trussel mot sambandsnoder, spektrumsforvaltning, EMCON og signaturstyring for KO.</p>
+  <div class="tags"><span class="tag">EK / spektrum / signatur</span><span class="tag q">Kilde: DefenseScoop</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>06.11.2026 15:18 UTC · Breaking Defense · breakingdefense.com</div>
+  <h3><a href="https://breakingdefense.com/2026/11/saudi-arabia-inks-first-defense-cooperation-agreement-with-syrias-new-leadership/" target="_blank" rel="noopener">Saudi Arabia inks first defense ‘cooperation’ agreement with Syria’s new leadership</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> “The agreement will likely initially focus on military training, intelligence sharing, equipment transfers and assistance in rebuilding Syria’s armed forces,” one expert told Breaking Defense.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Ledelse / trening / planlegging:</b> Kan berøre ledelse, planlegging, organisering, utdanning og trening i avdeling og stab.</p>
+  <div class="tags"><span class="tag">Ledelse / trening / planlegging</span><span class="tag q">Kilde: Breaking Defense</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>06.11.2026 11:30 UTC · Modern War Institute · mwi.westpoint.edu</div>
+  <h3><a href="https://mwi.westpoint.edu/the-army-is-connecting-its-apps-who-authorizes-their-actions/" target="_blank" rel="noopener">The Army Is Connecting Its Apps. Who Authorizes Their Actions?</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> A brigade staff receives a report that a supply route may be impassable. An AI-assisted planning application proposes an alternative. The recommendation appears in the common operational picture, where a […] The post The Army Is Connecting Its Apps. Who Authorizes Their Actions? appeared first …</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Kommandoplass / K2:</b> Kan berøre utforming, spredning, mobilitet og overlevelsesevne for KO, K2-noder og stabsarbeid.</p>
+  <div class="tags"><span class="tag">Kommandoplass / K2</span><span class="tag q">Kilde: Modern War Institute</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>06.11.2026 06:50 UTC · Forsvarets forum · www.forsvaretsforum.no</div>
+  <h3><a href="https://www.forsvaretsforum.no/droner-materiell-overvakning/fuglelignende-drone-ble-ikke-oppdaget-under-ovelse-1/531296" target="_blank" rel="noopener">Klarte ikke å oppdage fugle-drone</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Ingen beskrivelse i feeden.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Forsvarets forum</span></div>
+</article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>05.11.2026 20:22 UTC · Breaking Defense · breakingdefense.com</div>
   <h3><a href="https://breakingdefense.com/2026/11/the-push-to-give-dismounted-forces-direct-access-to-leo-and-meo-networks/" target="_blank" rel="noopener">The push to give dismounted forces direct access to LEO and MEO networks</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> [Sponsored] Accessibility in the field is critical to supporting troops without tethering them to vehicles or command posts.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Kommandoplass / C2:</b> Kan berøre overlevelsesevne, spredning og mobilitet for KO og C2-noder.</p>
-  <div class="tags"><span class="tag">Kommandoplass / C2</span><span class="tag q">Kilde: Breaking Defense</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Kommandoplass / K2:</b> Kan berøre utforming, spredning, mobilitet og overlevelsesevne for KO, K2-noder og stabsarbeid. <b>Lavt taktisk nivå / brukerutstyr:</b> Kan berøre radio, terminaler og digitale enheter hos soldat, lag, tropp og kompani, SOI og graderingshåndtering.</p>
+  <div class="tags"><span class="tag">Kommandoplass / K2</span><span class="tag">Lavt taktisk nivå / brukerutstyr</span><span class="tag q">Kilde: Breaking Defense</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>05.11.2026 19:00 UTC · Defense One · www.defenseone.com</div>
   <h3><a href="https://www.defenseone.com/threats/2026/11/warn-refrigerator-hacks-attacks-military/417076/" target="_blank" rel="noopener">Hackers are targeting refrigerators worldwide, US agencies warn</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The warning follows Nextgov/FCW reporting that officials suspect Iran-linked hackers were behind freezer failures at military commissaries.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
-  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber / informasjonssikkerhet:</b> Kan berøre sikkerhet og robusthet i taktiske CIS; sjekk om saken har taktisk relevans.</p>
+  <div class="tags"><span class="tag">Cyber / informasjonssikkerhet</span><span class="tag q">Kilde: Defense One</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>05.11.2026 18:02 UTC · Breaking Defense · breakingdefense.com</div>
+  <h3><a href="https://breakingdefense.com/2026/11/ukraine-eyeing-new-spacex-starshield-deal-by-mid-2027-still-no-answers-about-october-problems/" target="_blank" rel="noopener">Ukraine eyeing new SpaceX Starshield deal by mid-2027, still no answers about October problems</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> “I hope that the contract will be signed,” Ukraine’s Chargé d’Affaires Denys Sienik said, even as Kyiv considers potential alternatives to SpaceX.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Samband / nettverk:</b> Kan berøre bærere, sambandsnoder, retransmisjon, redundans og PACE i taktiske nett.</p>
+  <div class="tags"><span class="tag">Samband / nettverk</span><span class="tag q">Kilde: Breaking Defense</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>05.11.2026 17:23 UTC · Breaking Defense · breakingdefense.com</div>
   <h3><a href="https://breakingdefense.com/2026/11/saildrone-inks-agreement-with-norwegian-shipbuilder-umoe-mandal-to-produce-usvs/" target="_blank" rel="noopener">Saildrone inks agreement with Norwegian shipbuilder Umoe Mandal to produce USVs</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The agreement is the latest in a series of moves by Saildrone to expand into Europe.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Breaking Defense</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>05.11.2026 16:30 UTC · Breaking Defense · breakingdefense.com</div>
   <h3><a href="https://breakingdefense.com/2026/11/shield-ai-acquires-radar-firm-echodyne-in-5-3b-deal/" target="_blank" rel="noopener">Shield AI acquires radar firm Echodyne in $5.3B deal</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The deal, which is expected to close in early 2027, will give Shield an in-house counter-UAS offering</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Breaking Defense</span></div>
 </article><article class="card">
-  <div class="meta"><span class="kind">Nyhet</span>04.11.2026 23:23 UTC · Breaking Defense · breakingdefense.com</div>
-  <h3><a href="https://breakingdefense.com/2026/11/navy-unfairly-evaluated-saildrone-musv-proposal-court-finds/" target="_blank" rel="noopener">Navy unfairly evaluated Saildrone MUSV proposal, court finds</a></h3>
-  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> The court found that the Navy “engaged in disparate treatment” toward Saildrone’s MUSV proposal, according to an opinion unsealed Wednesday.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
+  <div class="meta"><span class="kind">Nyhet</span>05.11.2026 11:18 UTC · Modern War Institute · mwi.westpoint.edu</div>
+  <h3><a href="https://mwi.westpoint.edu/want-better-training-outcomes-let-the-opposing-force-win/" target="_blank" rel="noopener">Want Better Training Outcomes? Let the Opposing Force Win</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> During an exercise, the opposing force finds a weakness in the training unit’s plan. Exploiting it would prevent the unit from reaching the next scheduled activity, so the exercise director […] The post Want Better Training Outcomes? Let the Opposing Force Win appeared first on Modern War …</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Ledelse / trening / planlegging:</b> Kan berøre ledelse, planlegging, organisering, utdanning og trening i avdeling og stab.</p>
+  <div class="tags"><span class="tag">Ledelse / trening / planlegging</span><span class="tag q">Kilde: Modern War Institute</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>05.11.2026 08:30 UTC · War on the Rocks · warontherocks.com</div>
+  <h3><a href="https://warontherocks.com/who-repairs-the-internet-in-wartime/" target="_blank" rel="noopener">Who Repairs the Internet in Wartime?</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> In spring 2026, Britain, Norway, and the United States tracked and disrupted a covert Arctic exercise off the coast of Norway involving Russian deep-sea submersibles simulating the deployment of a weapon designed to disable the two 1,400-kilometer submarine cables linking the islands of Svalbard …</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Ledelse / trening / planlegging:</b> Kan berøre ledelse, planlegging, organisering, utdanning og trening i avdeling og stab.</p>
+  <div class="tags"><span class="tag">Ledelse / trening / planlegging</span><span class="tag q">Kilde: War on the Rocks</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>04.11.2026 22:00 UTC · Defense One · www.defenseone.com</div>
   <h3><a href="https://www.defenseone.com/policy/2026/11/democrats-midterm-sweep-puts-cisa-cuts-intelligence-disputes-under-scrutiny/417058/" target="_blank" rel="noopener">Dem lawmakers vow inquest into CISA cuts, intel policy</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> House Democrats will investigate the administration&#x27;s cyberdefense cuts, while Senate Dems will control confirmation hearings for the officials who lead the nation’s security agencies.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
-  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber / informasjonssikkerhet:</b> Kan berøre sikkerhet og robusthet i taktiske CIS; sjekk om saken har taktisk relevans.</p>
+  <div class="tags"><span class="tag">Cyber / informasjonssikkerhet</span><span class="tag q">Kilde: Defense One</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>04.11.2026 19:43 UTC · DefenseScoop · defensescoop.com</div>
   <h3><a href="https://defensescoop.com/2026/11/04/space-force-gen-schiess-russian-satellite-maneuvers/" target="_blank" rel="noopener">Space Force chief: Intelligence officials ‘making sure we get lessons learned’ from recent Russian satellite maneuvers near commercial sat</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Gen. Douglas Schiess suggested that the incident further highlighted the need for the Space Force to be able to defend U.S. assets. The post Space Force chief: Intelligence officials ‘making sure we get lessons learned’ from recent Russian satellite maneuvers near commercial sat appeared first …</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Bærere / radio / SATCOM:</b> Kan berøre valg av bærere, redundans (PACE) og samband ned til lag/tropp. <b>Lessons learned:</b> Saken omtaler erfaringer; sjekk kilden for hva som faktisk er dokumentert.</p>
-  <div class="tags"><span class="tag">Bærere / radio / SATCOM</span><span class="tag">Lessons learned</span><span class="tag q">Kilde: DefenseScoop</span></div>
-</article><article class="card">
-  <div class="meta"><span class="kind">Nyhet</span>04.11.2026 18:25 UTC · Breaking Defense · breakingdefense.com</div>
-  <h3><a href="https://breakingdefense.com/2026/11/naval-group-unveils-new-drone-carrier-concept/" target="_blank" rel="noopener">Naval Group unveils new drone carrier concept</a></h3>
-  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> “The return of high-intensity conflict and the emergence of hybrid naval warfare require a new vision. Naval Group answers with a new concept ship: SCX 26,” the company stated.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: Breaking Defense</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>TTP / erfaringer:</b> Saken kan omtale dokumentert praksis eller erfaringer; sjekk kilden for hva som faktisk er dokumentert.</p>
+  <div class="tags"><span class="tag">TTP / erfaringer</span><span class="tag q">Kilde: DefenseScoop</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>04.11.2026 18:23 UTC · War on the Rocks · warontherocks.com</div>
   <h3><a href="https://warontherocks.com/the-armys-command-and-control-reboot/" target="_blank" rel="noopener">The Army’s Command-and-Control Reboot</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> How the Army makes decisions, communicates orders, coordinates forces, and keeps operations moving toward a common goal is undergoing a revolution. It’s called Next Generation Command and Control. Two of its architects — Lt. Gen. Matthew W. McFarlane, commanding general of I Corps, and Maj. Gen. …</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Kommandoplass / C2:</b> Kan berøre overlevelsesevne, spredning og mobilitet for KO og C2-noder.</p>
-  <div class="tags"><span class="tag">Kommandoplass / C2</span><span class="tag q">Kilde: War on the Rocks</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Kommandoplass / K2:</b> Kan berøre utforming, spredning, mobilitet og overlevelsesevne for KO, K2-noder og stabsarbeid.</p>
+  <div class="tags"><span class="tag">Kommandoplass / K2</span><span class="tag q">Kilde: War on the Rocks</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>04.11.2026 07:34 UTC · Forsvarets forum · www.forsvaretsforum.no</div>
+  <h3><a href="https://www.forsvaretsforum.no/elon-musk-fma-materiell/forsvaret-og-politiet-kjoper-inn-starlink-til-450-millioner/531127" target="_blank" rel="noopener">Kjøper inn Starlink sammen med politiet</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Forsvarsmateriell har tildelt en rammeavtale for satellittkommunikasjon til det internasjonale selskapet Marlink.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Samband / nettverk:</b> Kan berøre bærere, sambandsnoder, retransmisjon, redundans og PACE i taktiske nett.</p>
+  <div class="tags"><span class="tag">Samband / nettverk</span><span class="tag q">Kilde: Forsvarets forum</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>03.11.2026 21:21 UTC · Defense One · www.defenseone.com</div>
+  <h3><a href="https://www.defenseone.com/defense-systems/2026/11/pentagon-ukraine-ground-robots/417011/" target="_blank" rel="noopener">Pentagon is beginning to follow Ukraine into wider use of ground robots</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> But many U.S. UGVs are more complicated than the attritable ones that Kyiv is buying.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Defense One</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>03.11.2026 12:34 UTC · Forsvarets forum · www.forsvaretsforum.no</div>
+  <h3><a href="https://www.forsvaretsforum.no/drone-droner-forsvaret/ny-luftovervaking-i-finnmark-skal-oppdage-droner/530980" target="_blank" rel="noopener">Ny luftovervåking skal oppdage droner</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Luftforsvaret har utplassert Nasams-sensorer i Kirkenes for å oppdage droner som kommer ut av kurs. Tiltaket kommer etter flere tilfeller av droner på avveie andre steder i Europa.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Forsvarets forum</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>03.11.2026 11:48 UTC · Forsvarets forum · www.forsvaretsforum.no</div>
+  <h3><a href="https://www.forsvaretsforum.no/droner-evakuering-krig/ukraina-har-evakuert-sarede-med-droner-for-forste-gang/530134" target="_blank" rel="noopener">Evakuerte sårede med droner</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Ingen beskrivelse i feeden.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: Forsvarets forum</span></div>
+</article><article class="card">
+  <div class="meta"><span class="kind">Nyhet</span>03.11.2026 07:58 UTC · Forsvarets forum · www.forsvaretsforum.no</div>
+  <h3><a href="https://www.forsvaretsforum.no/eu-europa-storbritannia/europas-ukraina-styrke-skal-ove-for-forste-gang/530783" target="_blank" rel="noopener">Europas Ukraina-styrke skal øve for første gang</a></h3>
+  <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Rundt 2800 soldater fra elleve europeiske land samles i Sørøst-Polen denne måneden for den første øvelsen til den flernasjonale styrken som skal bidra til sikkerheten i Ukraina.</p>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Interoperabilitet / standarder:</b> Kan berøre samvirke med allierte, FMN/MPE, felles standarder og datadeling. <b>Ledelse / trening / planlegging:</b> Kan berøre ledelse, planlegging, organisering, utdanning og trening i avdeling og stab.</p>
+  <div class="tags"><span class="tag">Interoperabilitet / standarder</span><span class="tag">Ledelse / trening / planlegging</span><span class="tag q">Kilde: Forsvarets forum</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>02.11.2026 23:00 UTC · Defense One · www.defenseone.com</div>
   <h3><a href="https://www.defenseone.com/policy/2026/11/industry-groups-cyber-sharing-law/416993/" target="_blank" rel="noopener">Industry groups want cyber threat-sharing law renewed through defense authorization bill</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Banks, utilities, and other industries are asking lawmakers to extend liability protections through 2035.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
-  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber / informasjonssikkerhet:</b> Kan berøre sikkerhet og robusthet i taktiske CIS; sjekk om saken har taktisk relevans.</p>
+  <div class="tags"><span class="tag">Cyber / informasjonssikkerhet</span><span class="tag q">Kilde: Defense One</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>02.11.2026 14:50 UTC · C4ISRNET · www.c4isrnet.com</div>
   <h3><a href="https://www.c4isrnet.com/videos/2026/11/02/what-could-the-humvee-of-the-future-look-like/" target="_blank" rel="noopener">What could the Humvee of the future look like?</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> From vehicles to wearable drone detection, new soldier systems were on display at AUSA 2026. Check out a roundup of our social coverage.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: C4ISRNET</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Lavt taktisk nivå / brukerutstyr:</b> Kan berøre radio, terminaler og digitale enheter hos soldat, lag, tropp og kompani, SOI og graderingshåndtering. <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Lavt taktisk nivå / brukerutstyr</span><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: C4ISRNET</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>02.11.2026 14:44 UTC · C4ISRNET · www.c4isrnet.com</div>
   <h3><a href="https://www.c4isrnet.com/videos/2026/11/02/high-energy-lasers-drones-and-power-innovations-in-defense-tech-business-of-defense-part-1/" target="_blank" rel="noopener">High-energy lasers, drones and power: Innovations in defense tech | Business of Defense – Part 1</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> From industry stalwarts to small startups, defense tech creators are looking to provide solutions as conflict morphs on a monthly basis. See some of what they had to offer at AUSA 2026.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / UAS:</b> Droner er både sensortrussel mot KO-signaturer og bruker av datalinker/frekvenser.</p>
-  <div class="tags"><span class="tag">Droner / UAS</span><span class="tag q">Kilde: C4ISRNET</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Droner / sensorer:</b> Droner og sensorer er både trussel mot KO-signaturer og brukere av datalinker og spektrum.</p>
+  <div class="tags"><span class="tag">Droner / sensorer</span><span class="tag q">Kilde: C4ISRNET</span></div>
 </article><article class="card">
   <div class="meta"><span class="kind">Nyhet</span>02.11.2026 14:00 UTC · Defense One · www.defenseone.com</div>
   <h3><a href="https://www.defenseone.com/threats/2026/11/officials-suspect-iran-series-cyberattacks-military-base-freezers/416992/" target="_blank" rel="noopener">Officials suspect Iran of cyberattacks on military base freezers</a></h3>
   <p class="sum"><b>Kildens beskrivelse (fra RSS, artikkelen er ikke lest):</b> Tehran is also suspected to have backed recent attacks on U.S. water-treatment equipment.</p>
-  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber:</b> Kan berøre CIS-sikkerhet og robusthet i taktiske nettverk.</p>
-  <div class="tags"><span class="tag">Cyber</span><span class="tag q">Kilde: Defense One</span></div>
+  <p class="rel"><b>Mulig relevans (automatisk, usikker):</b> <b>Cyber / informasjonssikkerhet:</b> Kan berøre sikkerhet og robusthet i taktiske CIS; sjekk om saken har taktisk relevans.</p>
+  <div class="tags"><span class="tag">Cyber / informasjonssikkerhet</span><span class="tag q">Kilde: Defense One</span></div>
 </article>
 <div id="ki" class="anchor"></div>
 <h2>KI-analyse av utvalgte saker</h2>
-<p class="muted">Sist oppdatert 06.11.2026.Artikkeltekst hentet og lest av Claude (KI) via workflowen «Oppdater Tactical CIS». Ikke en automatisk pipeline. Grønn ramme = <b>kildefakta</b> (ordrett fra artikkelen). Oransje ramme = <b>egen faglig vurdering</b> (KI), ikke artikkelens påstand. Lagres i analyses.json og tas med ved hver generering.</p>
+<p class="muted">Sist oppdatert 07.11.2026.Artikkeltekst hentet og lest av Claude (KI) via workflowen «Oppdater Tactical CIS». Ikke en automatisk pipeline. Grønn ramme = <b>kildefakta</b> (ordrett fra artikkelen). Oransje ramme = <b>egen faglig vurdering</b> (KI), ikke artikkelens påstand. Lagres i analyses.json og tas med ved hver generering.</p>
+<article class="card lp">
+  <div class="meta">Forsvarets Forum · analysert 07.11.2026 · artikkeltekst lest (ca. 255 ord) · relevans: <b>høy (taktisk CIS, EW mot droner)</b></div>
+  <h3><a href="https://www.forsvaretsforum.no/droner-jamming-materiell/slik-skal-russiske-droner-motsta-ukrainsk-jamming/530956" target="_blank" rel="noopener">Slik skal russiske droner motstå ukrainsk jamming</a></h3>
+  <div class="tags areas"><span class="lbl-a">Fagområder (KI):</span><span class="tag q">Sambandsnoder og taktiske nettverk</span><span class="tag q">TTP og praktiske erfaringer</span></div>
+  <h4 class="sec q-fact">Hva viser kildene? <span>(kildens innhold)</span></h4>
+  <p class="sum"><b>Sammendrag:</b> Russiske droner får større antenner og bruker navigasjonssystemet Kometa for å opprettholde satellittnavigasjon under jamming, mens ukrainske styrker har utviklet en koordinat‑spoofing‑metode for å avlede dem.</p>
+  <p class="sum"><b>Beskriver (teknologi):</b> Russiske droner kan med større antenner opprettholde satellittnavigasjon og motstå jamming.</p>
+  <blockquote>«Russland utstyrer dronene sine med større antenner for å gjøre dem mer motstandsdyktige mot ukrainsk jamming.»</blockquote>
+  <blockquote>«Ifølge Ukrainas militære etterretningstjeneste (HUR) bruker Russland navigasjonssystemet Kometa, som skal opprettholde satellittnavigasjonen selv når signalene utsettes for jamming.»</blockquote>
+  <p class="cite">Kilde: Forsvarets Forum, «Slik skal russiske droner motstå ukrainsk jamming» (07.11.2026).</p>
+  <h4 class="sec q-own">So what? Betydning for S-6 <span>(egen vurdering, KI)</span></h4>
+  <p class="own"><b>Egen vurdering:</b> Økt antennestørrelse reduserer effekten av våre jamming‑midler, så S‑6 må vurdere alternative EW‑tiltak. Ukrainas spoofing‑metode gir et potensielt lav‑teknologisk alternativ for dronedefense som kan integreres i KO‑planer.</p>
+  <h4 class="sec q-fact">TTP og praktisk læring <span>(dokumentert i kilden)</span></h4>
+  <p class="muted ttp-note">Praksis slik kilden selv beskriver den, med ordrett sitat. Gjengivelse av kilden, ikke en anbefaling.</p>
+  <div class="ttp">
+    <p class="ttp-st">Status (KI-klassifisert ut fra kilden): anbefalt</p>
+    <p class="sum"><b>Praksis (KI-gjengivelse av kilden):</b> Ukrainske enheter kobler flere senderenheter sammen for å sende dronene falske koordinater som gradvis endrer kursen bort fra målområder.</p>
+    <p class="sum"><b>Betingelser:</b> Når droner bruker satellittbasert navigasjon og kan motta oppdaterte koordinater fra bakken.</p>
+    <blockquote>«– Dronen tror fortsatt at den flyr mot målet sitt, men autopiloten bruker de falske koordinatene til gradvis å endre kursen og styre dronen bort fra byer og mot trygge områder,»</blockquote>
+  </div>
+  <h4 class="sec q-now">Now what? Mulig læring <span>(egen vurdering, KI, ikke tiltak fra kilden)</span></h4>
+  <h5>Læringspunkt 1: Vurder behovet for anti‑jamming tiltak mot droner med forbedrede antenner <span>· I planleggingen</span></h5>
+  <p class="own"><b>Egen vurdering:</b> Egen vurdering: Økt antennestørrelse kan redusere effektiviteten til våre jamming‑systemer, så S‑6 bør planlegge alternative EW‑midler eller høyere frekvensbredde.</p>
+  <h5>Læringspunkt 2: Implementer koordinat‑spoofing som del av dronemotstand <span>· I trening og øving</span></h5>
+  <p class="own"><b>Egen vurdering:</b> Egen vurdering: Ukrainas metode viser at falske koordinater kan avlede droner, så dette bør testes i øvelser for å styrke K2‑nivåets dronedefense.</p>
+  <div class="own"><b>Bør undersøkes nærmere:</b><ul><li>Hvor effektiv er jamming mot droner med større antenner i våre frekvensbånd?</li><li>Kan våre eksisterende EW‑systemer generere falske koordinater for å forstyrre droner?</li><li>Hva er kravene til antall mottakere i en antenne for å oppnå betydelig jamming‑motstand?</li></ul></div>
+  <p class="limits"><b>Begrensninger:</b> Enkelt nyhetsinnslag uten uavhengig verifisering; detaljer om tekniske spesifikasjoner og operasjonell bruk er begrenset.</p>
+</article>
+<article class="card lp">
+  <div class="meta">Forsvaretsforum · analysert 07.11.2026 · artikkeltekst lest (ca. 170 ord) · relevans: <b>Relevant for S‑6 ved å gi mulighet til raskt etablere bredbånd i felt, men foreløpig brukt administrativt.</b></div>
+  <h3><a href="https://www.forsvaretsforum.no/elon-musk-fma-materiell/forsvaret-og-politiet-kjoper-inn-starlink-til-450-millioner/531127" target="_blank" rel="noopener">Kjøper inn Starlink sammen med politiet</a></h3>
+  <div class="tags areas"><span class="lbl-a">Fagområder (KI):</span><span class="tag q">Sambandsnoder og taktiske nettverk</span><span class="tag q">Utstyr og bruk på lavt taktisk nivå</span><span class="tag q">TTP og praktiske erfaringer</span></div>
+  <h4 class="sec q-fact">Hva viser kildene? <span>(kildens innhold)</span></h4>
+  <p class="sum"><b>Sammendrag:</b> Forsvaret har inngått en rammeavtale på inntil 450 MNOK med Marlink for Starlink‑satellittkommunikasjon, som allerede brukes til e‑post, internettilgang og velferd for 180 aktive abonnementer, og avtalen omfatter også politi, PST og NSM samt mulighet for fremtidig bruk av Starshield.</p>
+  <p class="sum"><b>Beskriver (teknologi):</b> Starlink‑satellittkommunikasjon for administrativt og potensielt militært bruk på taktisk nivå.</p>
+  <blockquote>«Rammeavtalen dekker Forsvaret, Politiet, PST og Nasjonal sikkerhetsmyndighet (NSM).»</blockquote>
+  <blockquote>«Forsvaret benytter Starlink til administrative formål og velferd, blant annet e‑post og internettilgang.»</blockquote>
+  <blockquote>«Starlink brukes allerede av Forsvaret og Heimevernet.»</blockquote>
+  <p class="cite">Kilde: Forsvaretsforum, «Kjøper inn Starlink sammen med politiet» (04.11.2026). Påstandene tilskrives Hanne Stine Kind, kommunikasjonssjef i Cyberforsvaret.</p>
+  <h4 class="sec q-own">So what? Betydning for S-6 <span>(egen vurdering, KI)</span></h4>
+  <p class="own"><b>Egen vurdering:</b> Satellittbasert bredbånd kan gi pålitelig kommunikasjon til KO og K2, men avhenger av avtalt antall abonnementer, sikkerhetsklassifisering og integrasjon med eksisterende nettverk.</p>
+  <h4 class="sec q-fact">TTP og praktisk læring <span>(dokumentert i kilden)</span></h4>
+  <p class="muted ttp-note">Praksis slik kilden selv beskriver den, med ordrett sitat. Gjengivelse av kilden, ikke en anbefaling.</p>
+  <div class="ttp">
+    <p class="ttp-st">Status (KI-klassifisert ut fra kilden): brukt</p>
+    <p class="sum"><b>Praksis (KI-gjengivelse av kilden):</b> Bruke Starlink‑abonnementer for e‑post, internettilgang og velferdstjenester i felt</p>
+    <p class="sum"><b>Betingelser:</b> Tilgjengelig gjennom rammeavtale med Marlink, 180 aktive abonnementer, ingen rapporterte leveranseproblemer</p>
+    <blockquote>«Forsvaret benytter Starlink til administrative formål og velferd, blant annet e‑post og internettilgang.»</blockquote>
+  </div>
+  <h4 class="sec q-now">Now what? Mulig læring <span>(egen vurdering, KI, ikke tiltak fra kilden)</span></h4>
+  <h5>Læringspunkt 1: Planlegg satellittbasert bredbånd for feltbruk <span>· I planleggingen</span></h5>
+  <p class="own"><b>Egen vurdering:</b> Egen vurdering: Starlink kan dekke både administrative og taktiske behov, men S‑6 må sikre at abonnementer er tilgjengelige på lavt nivå og at sikkerhetsklassifisering er ivaretatt.</p>
+  <h5>Læringspunkt 2: Vurder sikkerhetsimplikasjoner ved bruk av kommersielle satellittnett <span>· I organiseringen</span></h5>
+  <p class="own"><b>Egen vurdering:</b> Egen vurdering: Selv om leveransen er pålitelig, må data krypteres og integreres med eksisterende nettverk for å unngå sårbarheter.</p>
+  <div class="own"><b>Bør undersøkes nærmere:</b><ul><li>Hvordan kan Starlink‑abonnementer integreres i KO‑nettverk med nødvendig kryptering?</li><li>Hva er kostnads‑ og vedlikeholdsimplikasjonene for å opprettholde 180+ abonnementer på battalion‑nivå?</li></ul></div>
+  <p class="limits"><b>Begrensninger:</b> Enkeltstående nyhetsartikkel; ingen detaljert operasjonell informasjon, mulige leverandør‑ og politisk bias, og delvis uklar om taktisk bruk utover administrativt.</p>
+</article>
+<article class="card lp">
+  <div class="meta">Forsvaretsforum · analysert 07.11.2026 · artikkeltekst lest (ca. 278 ord) · relevans: <b>Relevant for K2‑nivå ved å gi luftromsovervåkning som kan integreres i taktisk CIS.</b></div>
+  <h3><a href="https://www.forsvaretsforum.no/drone-droner-forsvaret/ny-luftovervaking-i-finnmark-skal-oppdage-droner/530980" target="_blank" rel="noopener">Ny luftovervåking skal oppdage droner</a></h3>
+  <div class="tags areas"><span class="lbl-a">Fagområder (KI):</span><span class="tag q">Sambandsnoder og taktiske nettverk</span><span class="tag q">TTP og praktiske erfaringer</span><span class="tag q">Utstyr og bruk på lavt taktisk nivå</span></div>
+  <h4 class="sec q-fact">Hva viser kildene? <span>(kildens innhold)</span></h4>
+  <p class="sum"><b>Sammendrag:</b> Forsvaret har satt opp NASAMS‑sensorer i Kirkenes for å oppdage droner, styrker Garnisonen i Sør‑Varanger med 30 soldater og samarbeider med politi for å håndheve luftromsrestriksjoner.</p>
+  <p class="sum"><b>Beskriver (teknologi):</b> NASAMS‑sensorene gir tidlig oppdagelse og varsling av droner i grenseområdene i Finnmark.</p>
+  <blockquote>«Luftforsvaret har utplassert Nasams-sensorer i Kirkenes for å oppdage droner som kommer ut av kurs.»</blockquote>
+  <blockquote>«Sensorene skal oppdage, varsle om droner og gi et best mulig bilde av det som beveger seg i luftrommet i grenseområdene.»</blockquote>
+  <blockquote>«De 30 soldatene vil være utplassert hos Jegerbataljonen ved GSV ut året.»</blockquote>
+  <p class="cite">Kilde: Forsvaretsforum, «Ny luftovervåking skal oppdage droner» (03.11.2026). Påstandene tilskrives forsvarsminister Tore O. Sandvik og justis‑ og beredskapsminister Astri Aas‑Hansen.</p>
+  <h4 class="sec q-own">So what? Betydning for S-6 <span>(egen vurdering, KI)</span></h4>
+  <p class="own"><b>Egen vurdering:</b> Gir mulighet for tidlig varsling og koordinering med politiet, men krever integrasjon i eksisterende kommandopost‑systemer og sikre nettverk.</p>
+  <h4 class="sec q-fact">TTP og praktisk læring <span>(dokumentert i kilden)</span></h4>
+  <p class="muted ttp-note">Praksis slik kilden selv beskriver den, med ordrett sitat. Gjengivelse av kilden, ikke en anbefaling.</p>
+  <div class="ttp">
+    <p class="ttp-st">Status (KI-klassifisert ut fra kilden): brukt</p>
+    <p class="sum"><b>Praksis (KI-gjengivelse av kilden):</b> Utplassering av NASAMS‑sensorer i Kirkenes for å oppdage droner</p>
+    <p class="sum"><b>Betingelser:</b> Forebyggende tiltak uten konkret ny trussel, i grenseområdet Finnmark</p>
+    <blockquote>«Luftforsvaret har utplassert Nasams-sensorer i Kirkenes for å oppdage droner som kommer ut av kurs.»</blockquote>
+  </div>
+  <div class="ttp">
+    <p class="ttp-st">Status (KI-klassifisert ut fra kilden): brukt</p>
+    <p class="sum"><b>Praksis (KI-gjengivelse av kilden):</b> Samarbeid med politi og andre totalforsvarsaktører for å håndheve restriksjoner i luftrommet</p>
+    <p class="sum"><b>Betingelser:</b> Når det er behov for å begrense uautoriserte droner</p>
+    <blockquote>«Forsvaret samarbeider med politi og andre totalforsvarsaktører for å håndheve restriksjoner i luftrommet når det trengs.»</blockquote>
+  </div>
+  <h4 class="sec q-now">Now what? Mulig læring <span>(egen vurdering, KI, ikke tiltak fra kilden)</span></h4>
+  <h5>Læringspunkt 1: Integrere drone‑deteksjon i K2‑sambandsnett <span>· I planleggingen</span></h5>
+  <p class="own"><b>Egen vurdering:</b> Egen vurdering: Sensorenes data må kobles til KO‑systemet via sikre nettverk for å gi sanntidsvarsling til bataljons‑ og kompanisamband.</p>
+  <h5>Læringspunkt 2: Koordinere luftromsrestriksjoner med sivile myndigheter <span>· I organiseringen</span></h5>
+  <p class="own"><b>Egen vurdering:</b> Egen vurdering: Etablere prosedyrer for rask informasjonsutveksling mellom militært CIS og politiets luftromskontroll for å håndheve restriksjoner.</p>
+  <div class="own"><b>Bør undersøkes nærmere:</b><ul><li>Hvordan kan data fra NASAMS‑sensorene integreres i eksisterende taktiske kommandopost‑systemer?</li><li>Hvilke krav stilles til nettverkssikkerhet ved overføring av sensor‑data til K2‑nivå?</li><li>Hva er prosedyrer for samhandling med politiet ved identifisering av uautoriserte droner?</li></ul></div>
+  <p class="limits"><b>Begrensninger:</b> Kilden er en pressemelding og journalistisk oppsummering; ingen detaljer om sensorens rekkevidde, nøyaktighet eller integrasjonsgrensesnitt.</p>
+</article>
 <article class="card lp">
   <div class="meta">DefenseScoop · analysert 02.11.2026 · artikkeltekst lest (ca. 985 ord) · relevans: <b>middels (koalisjonssamband / MPE / feilsøking i felt)</b></div>
   <h3><a href="https://defensescoop.com/2026/10/29/gdit-vion-mission-partner-environment-system/" target="_blank" rel="noopener">GDIT puts Vion mission partner environment technology through its paces during Pacific exercise</a></h3>
@@ -289,8 +479,8 @@ Relevansvurderingen er nøkkelordbasert og kan være feil. Verifiser alltid i or
 <article class="card old">
   <div class="meta">Avviste saker</div>
   <p class="sum"><b>Lest, men avvist:</b></p>
-  <ul class="sum"><li><a href="https://breakingdefense.com/2026/11/pacific-command-bolsters-network-defense-with-cyber-defense-forces-pacific/" target="_blank" rel="noopener">Pacific Command bolsters network defense with Cyber Defense Forces Pacific</a>: handler om cyberforsvar av nettverk på teaternivå (DISA-Pacific), uten taktisk innhold for bataljon og lavere.</li><li><a href="https://www.defenseone.com/business/2026/10/defense-business-brief-tech-edge-pacfleet-talks-cyber-and-more/416906/" target="_blank" rel="noopener">Defense Business Brief: Tech at the edge; PACFLEET talks cyber</a>: inneholder bare generelle uttalelser («our networks will be fully under attack», «operate disaggregated and distributed») uten konkrete erfaringer eller tiltak. Det er for tynt til å utlede læringspunkter.</li><li><a href="https://defensescoop.com/2026/10/28/army-test-range-access-commercial-vendors-drone-technology/" target="_blank" rel="noopener">Army designates 2 additional ‘permissive’ sites for commercial vendors to test their drone and counter-drone tech</a>: Artikkelen handler om testområder for kommersielle leverandører av drone- og motdrone-teknologi og gir ingen konkret informasjon om taktisk samband, C2 eller KO på bataljonsnivå.</li><li><a href="https://defensescoop.com/2026/10/28/army-aws-wwt-ai-cybersecurity-project-griffin/" target="_blank" rel="noopener">Army taps AWS and WWT to boost AI-enabled cybersecurity initiative</a>: Artikkelen omhandler overordnet AI‑drevet cybersikkerhetsprogram og kontraktvalg, uten konkrete taktiske eller operative implikasjoner for S‑6, bataljons‑KO eller felt‑C2.</li><li><a href="https://www.defenseone.com/threats/2026/11/officials-suspect-iran-series-cyberattacks-military-base-freezers/416992/" target="_blank" rel="noopener">Officials suspect Iran of cyberattacks on military base freezers</a>: Artikkelen omhandler cyberangrep på fryseutstyr og har ingen direkte relevans for S‑6, taktisk samband, C2 eller KO på bataljonsnivå.</li></ul>
-  <p class="sum"><b>Avvist ut fra tittel og RSS-beskrivelse (ikke slått opp):</b> Hackere kjøleskap (Cyber‑trussel mot infrastruktur, ikke taktisk CIS), Saildrone USV‑avtale (USV‑produksjon, strategisk nivå), Shield AI‑kjøp (Industriell oppkjøp, ikke direkte CIS), Saildrone rettssak (Juridisk sak, ingen taktisk relevans), CISA‑kutt (Politiske prosesser, høyere nivå), Satellitt‑manøvrer (Strategisk romoperasjon, ikke bataljons‑CIS), Drone‑carrier (Stort skip‑konsept, strategisk nivå), Cyber‑delingslov (Lovgivning, ikke operativt), Humvee fremtid (Kjøretøy‑konsept, ingen CIS), Laser‑drone tech (Generell teknologi, ikke spesifikk taktisk CIS).</p>
+  <ul class="sum"><li><a href="https://breakingdefense.com/2026/11/pacific-command-bolsters-network-defense-with-cyber-defense-forces-pacific/" target="_blank" rel="noopener">Pacific Command bolsters network defense with Cyber Defense Forces Pacific</a>: handler om cyberforsvar av nettverk på teaternivå (DISA-Pacific), uten taktisk innhold for bataljon og lavere.</li><li><a href="https://www.defenseone.com/business/2026/10/defense-business-brief-tech-edge-pacfleet-talks-cyber-and-more/416906/" target="_blank" rel="noopener">Defense Business Brief: Tech at the edge; PACFLEET talks cyber</a>: inneholder bare generelle uttalelser («our networks will be fully under attack», «operate disaggregated and distributed») uten konkrete erfaringer eller tiltak. Det er for tynt til å utlede læringspunkter.</li><li><a href="https://defensescoop.com/2026/10/28/army-test-range-access-commercial-vendors-drone-technology/" target="_blank" rel="noopener">Army designates 2 additional ‘permissive’ sites for commercial vendors to test their drone and counter-drone tech</a>: Artikkelen handler om testområder for kommersielle leverandører av drone- og motdrone-teknologi og gir ingen konkret informasjon om taktisk samband, C2 eller KO på bataljonsnivå.</li><li><a href="https://defensescoop.com/2026/10/28/army-aws-wwt-ai-cybersecurity-project-griffin/" target="_blank" rel="noopener">Army taps AWS and WWT to boost AI-enabled cybersecurity initiative</a>: Artikkelen omhandler overordnet AI‑drevet cybersikkerhetsprogram og kontraktvalg, uten konkrete taktiske eller operative implikasjoner for S‑6, bataljons‑KO eller felt‑C2.</li><li><a href="https://www.defenseone.com/threats/2026/11/officials-suspect-iran-series-cyberattacks-military-base-freezers/416992/" target="_blank" rel="noopener">Officials suspect Iran of cyberattacks on military base freezers</a>: Artikkelen omhandler cyberangrep på fryseutstyr og har ingen direkte relevans for S‑6, taktisk samband, C2 eller KO på bataljonsnivå.</li><li><a href="https://mwi.westpoint.edu/want-better-training-outcomes-let-the-opposing-force-win/" target="_blank" rel="noopener">Want Better Training Outcomes? Let the Opposing Force Win</a>: Artikkelen handler om generelle treningsmetoder for motstanderstyrke og gir ingen konkret faglig informasjon om taktisk samband, KO eller K2 på bataljonsnivå.</li></ul>
+  <p class="sum"><b>Avvist ut fra tittel og RSS-beskrivelse (ikke slått opp):</b> The Army Needs to Build Better Command Posts (Strategisk nivå, ingen konkret taktisk CIS‑verdi.), The Army Is Connecting Its Apps (Fokus på autorisasjon av apper, lite direkte relevans for lavnivå‑CIS.), GPS Jamming Risks to Civilians (Personell‑/civilt fokus, ikke taktisk CIS.), The Army’s Command-and-Control Reboot (Strategisk/overordnet C2‑reform, for høy nivå.), Europas Ukraina‑styrke Øvelse (Generell øvelse, ingen spesifikk CIS‑innsikt.), Humvee of the Future (Kjøretøy‑fokus, ikke CIS.), Klarte ikke å oppdage fugle‑drone (Ingen beskrivelse, for tynt grunnlag.), Saudi‑Syria Defense Agreement (Strategisk/politisk, ikke CIS‑relevant.), Talks, Attacks, and a Heist (Bred analyse, ingen konkret CIS‑verdi.), AI Confidence Between US and China (Strategisk AI‑politikk, ikke taktisk CIS.), Rasputitsa Operational Impact (Strategisk/operasjonelt, ikke CIS‑spesifikt.), Hackers Target Refrigerators (Cyber‑sikkerhet på sivile enheter, ikke taktisk CIS.), How the Army Fights Maritime War (Maritimt fokus, uten CIS‑relevans.), War for the Mind Narrative AI (Strategisk informasjonskrig, ikke taktisk CIS.), Pentagon Follows Ukraine Ground Robots (Robot‑fokus, lite om CIS‑nett.), Evakuerte sårede med droner (Ingen beskrivelse, for tynt grunnlag.), Finansierte droner til Ukraina (Finansiering, ikke taktisk CIS‑innhold.), HMS Prince of Wales Oslofjorden (Skip‑bevegelse, ingen CIS‑relevans.), Gir en halv milliard til Ukraina (Økonomisk støtte, ikke CIS‑fokus.), Blir ny stabssjef for Trump (Politisk nyhet, ingen CIS‑verdi.), Missed AUSA 2026? eBook (Markedsføring av e‑bok, lite konkret CIS‑innhold.), Dialogue with China on AI (Strategisk AI‑politikk, ikke taktisk CIS.), Saildrone USV Agreement (Industri‑nyhet, ikke direkte CIS‑relevans.).</p>
 </article>
 <h2>Lessons learned – dokumenterte læringspunkter</h2>
 <p class="muted" id="laering">Lest i fulltekst og lagt inn manuelt. Hvert punkt har ordrett sitat (grønt) og sidetall, adskilt fra egen tolkning (oransje).</p>
@@ -319,24 +509,69 @@ Relevansvurderingen er nøkkelordbasert og kan være feil. Verifiser alltid i or
 </article>
 <div id="fagstoff" class="anchor"></div>
 <h2>Eldre fagstoff – ikke lest</h2>
-<p class="muted">Kun kilder som svarte ved siste oppdatering. Tittel og beskrivelse er hentet fra kildens egen side.</p>
+<p class="muted">Fast katalog over faglige referanser. Tittel, utgiver og beskrivelse er hentet fra kildens egen side og
+kontrollert på datoen som står ved hver kilde («verifisert tilgjengelig»). Lenkene sjekkes ikke ved hver oppdatering, så en side kan ha
+endret seg siden. Rapportene er ikke lest av verktøyet.</p>
 <article class="card old ref">
-  <div class="meta"><span class="kind">Fagstoff</span>www.rusi.org · verifisert tilgjengelig 06.11.2026 13:16 UTC</div>
+  <div class="meta"><span class="kind">Fagstoff</span>War on the Rocks · 07.05.2026 · warontherocks.com · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://warontherocks.com/the-army-needs-to-build-better-command-posts/" target="_blank" rel="noopener">The Army Needs to Build Better Command Posts</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> It would be odd to see a TOC Mahal in the Russo-Ukrainian War. Often spotted at U.S. Army Combat Training Center rotations or large home-station</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Kommandoplasser og K2, EK, spektrum og signatur, Ledelse, planlegging, utdanning og trening. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>Modern War Institute · 17.04.2024 · mwi.westpoint.edu · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://mwi.westpoint.edu/the-costs-of-comms-adapting-for-the-communications-restricted-battlefield/" target="_blank" rel="noopener">The Costs of Comms: Adapting for the Communications-Restricted Battlefield</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> For decades, the cost of communicating for the Army has been almost entirely measured in dollars. How much money would the service require to purchase, operate, and maintain its information […]</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Sambandsnoder og taktiske nettverk, EK, spektrum og signatur, Kommandoplasser og K2. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>Modern War Institute · 19.08.2020 · mwi.westpoint.edu · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://mwi.westpoint.edu/its-time-to-fix-the-command-post-optimizing-headquarters-mobility-survivability-and-interoperability-for-the-future-fight/" target="_blank" rel="noopener">It’s Time to Fix the Command Post: Optimizing Headquarters’ Mobility, Survivability, and Interoperability for the Future Fight</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> In the brief but devastating Battle of Zelenopillya in July 2014, Russian forces targeted several Ukrainian battalions with rocket artillery, conducting one of the largest artillery barrages on the European […]</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Kommandoplasser og K2, Sambandsnoder og taktiske nettverk, EK, spektrum og signatur, Interoperabilitet og teknologianvendelse. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>Modern War Institute · 01.03.2024 · mwi.westpoint.edu · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://mwi.westpoint.edu/preparing-your-unit-to-win-the-first-fight-of-the-next-war/" target="_blank" rel="noopener">Preparing Your Unit to Win the First Fight of the Next War</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> Part one of this two-part series described several ways that the National Training Center (NTC) is adapting to preliminary lessons from the war in Ukraine. From the technology-driven transparency of […]</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: TTP og praktiske erfaringer, Ledelse, planlegging, utdanning og trening, Kommandoplasser og K2, EK, spektrum og signatur. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>War on the Rocks · 09.09.2026 · warontherocks.com · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://warontherocks.com/the-strange-transformation-of-the-front-line-in-ukraine/" target="_blank" rel="noopener">The Strange Transformation of the Front Line in Ukraine</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> On Jan. 5, 2025, my volunteer platoon attached to the 23rd Special Purpose Battalion of the Presidential Brigade entered a 1-kilometer-long tree line</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Utstyr og bruk på lavt taktisk nivå, TTP og praktiske erfaringer, Droner og sensorer. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>Modern War Institute · 10.12.2025 · mwi.westpoint.edu · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://mwi.westpoint.edu/the-death-of-the-triangular-patrol-base/" target="_blank" rel="noopener">The Death of the Triangular Patrol Base?</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> Three dozen silhouettes glided silently through the dense pine forests. The platoon’s tactical movement was flawless, executed according to doctrine and in a manner honed by countless repetitions in training. […]</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Utstyr og bruk på lavt taktisk nivå, EK, spektrum og signatur, Droner og sensorer, TTP og praktiske erfaringer. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>Royal United Services Institute · 09.03.2022 · www.rusi.org · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://www.rusi.org/explore-our-research/publications/commentary/russian-comms-ukraine-world-hertz" target="_blank" rel="noopener">Russian Comms in Ukraine: A World of Hertz</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> Evidence of Russian communications in Ukraine indicates that the modernisation of the Russian Armed Forces has been troubled, causing operational and tactical challenges.</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Sambandsnoder og taktiske nettverk, Utstyr og bruk på lavt taktisk nivå, EK, spektrum og signatur. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>Modern War Institute · 05.08.2025 · mwi.westpoint.edu · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://mwi.westpoint.edu/learn-or-lose-lessons-from-ukrainian-training-in-germany/" target="_blank" rel="noopener">Learn or Lose: Lessons from Ukrainian Training in Germany</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> In the American Revolutionary War, British soldiers employed orderly, neat formations that they had perfected in European battlefields, but that were worthless against colonial rebels. More than two centuries later, […]</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Ledelse, planlegging, utdanning og trening, TTP og praktiske erfaringer, Droner og sensorer. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>War on the Rocks · 25.03.2022 · warontherocks.com · verifisert tilgjengelig 05.11.2026</div>
+  <h3><a href="https://warontherocks.com/from-bombs-to-bits-air-to-ground-operations-as-a-model-for-the-tactical-information-environment/" target="_blank" rel="noopener">From Bombs to Bits: Air-to-Ground Operations as a Model for the Tactical Information Environment</a></h3>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> The lethality of American air power lies not only in aviation technology but in strategies developed for deploying it. Over the last century, aviation has</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: Cyber og informasjonssikkerhet, EK, spektrum og signatur, Ledelse, planlegging, utdanning og trening. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+</article><article class="card old ref">
+  <div class="meta"><span class="kind">Fagstoff</span>Royal United Services Institute · 30.11.2022 · www.rusi.org · verifisert tilgjengelig 05.11.2026</div>
   <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/preliminary-lessons-conventional-warfighting-russias-invasion-ukraine-february-july-2022" target="_blank" rel="noopener">Preliminary Lessons in Conventional Warfighting from Russia’s Invasion of Ukraine: February–July 2022</a></h3>
-  <p class="sum"><b>Kildens egen beskrivelse:</b> This study of the early phases of the 2022 war sheds light on Ukraine&#x27;s strengths and vulnerabilities, and the need for further Western support.
-</p>
-  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare, headquarters. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> This study of the early phases of the 2022 war sheds light on Ukraine&#x27;s strengths and vulnerabilities, and the need for further Western support.</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: TTP og praktiske erfaringer, EK, spektrum og signatur, Kommandoplasser og K2. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
 </article><article class="card old ref">
-  <div class="meta"><span class="kind">Fagstoff</span>www.rusi.org · verifisert tilgjengelig 06.11.2026 13:16 UTC</div>
+  <div class="meta"><span class="kind">Fagstoff</span>Royal United Services Institute · 04.09.2023 · www.rusi.org · verifisert tilgjengelig 05.11.2026</div>
   <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/stormbreak-fighting-through-russian-defences-ukraines-2023-offensive" target="_blank" rel="noopener">Stormbreak: Fighting Through Russian Defences in Ukraine’s 2023 Offensive</a></h3>
-  <p class="sum"><b>Kildens egen beskrivelse:</b> Russian defences and military adaptations pose challenges for Ukraine&#x27;s 2023 offensive.
-</p>
-  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+  <p class="sum"><b>Kildens egen beskrivelse:</b> Russian defences and military adaptations pose challenges for Ukraine&#x27;s 2023 offensive.</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: TTP og praktiske erfaringer, EK, spektrum og signatur. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
 </article><article class="card old ref">
-  <div class="meta"><span class="kind">Fagstoff</span>www.rusi.org · verifisert tilgjengelig 06.11.2026 13:16 UTC</div>
+  <div class="meta"><span class="kind">Fagstoff</span>Royal United Services Institute · 18.07.2024 · www.rusi.org · verifisert tilgjengelig 05.11.2026</div>
   <h3><a href="https://www.rusi.org/explore-our-research/publications/special-resources/preliminary-lessons-ukraines-offensive-operations-2022-23" target="_blank" rel="noopener">Preliminary Lessons from Ukraine’s Offensive Operations, 2022–23</a></h3>
   <p class="sum"><b>Kildens egen beskrivelse:</b> The purpose of this report is to examine the causes of the failure of the Ukrainian offensive in 2023 to avoid the repetition of such errors in the future and to inform the regeneration of offensive combat power in NATO militaries.</p>
-  <p class="rel"><b>Mulig relevans:</b> Kildens side nevner: electronic warfare, drone. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
+  <p class="rel"><b>Mulig relevans:</b> Fagområder: TTP og praktiske erfaringer, EK, spektrum og signatur, Ledelse, planlegging, utdanning og trening. Rapporten er ikke lest av verktøyet – les selv før du trekker læringspunkter.</p>
 </article>
 <footer class="muted">Tactical CIS Intelligence er en hobbyprototype. Ikke offisiell veiledning. Kontroller alltid opplysninger i originalkilden før bruk.</footer>
 </main></body></html>
